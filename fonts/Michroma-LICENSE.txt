@@ -1,0 +1,9 @@
+Michroma
+Copyright (c) 2011, Vernon Adams (vern@newtypography.co.uk).
+
+This font is licensed under the SIL Open Font License, Version 1.1.
+The full license text is available at:
+https://openfontlicense.org  (OFL-1.1)
+
+The font is bundled here (michroma-regular.woff2) solely to render the
+Vanduo wordmark/labels self-contained, with no external font requests.
