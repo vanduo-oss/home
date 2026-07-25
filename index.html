@@ -456,16 +456,24 @@
         <code>data-theme</code> and related attributes on the document root.
       </p>
       <p>
-        It began as a <em>dual-engine</em> system: a zero-build Vanilla CSS/JS framework
-        (<code>@vanduo-oss/framework</code>) and a parallel Vue&nbsp;3 layer
-        (<code>@vanduo-oss/vue</code>), both fed by one framework-agnostic set of DTCG
-        design tokens (<code>@vanduo-oss/core</code>), with SVG charts, a flowchart
-        editor, canvas hex grids and an audio player alongside. Maintaining two engines
-        against one token source meant every change had to be made and verified twice.
+        It began on <strong>31&nbsp;January&nbsp;2026</strong> as one thing only: a
+        zero-build <em>Vanilla</em> CSS/JS framework, <code>@vanduo-oss/framework</code>.
+        No build step, no dependencies, no framework to adopt — drop in a stylesheet,
+        write <code>.vd-*</code> classes and <code>data-vd-*</code> attributes, and drive
+        the rest through an imperative <code>window.Vanduo</code> runtime. SVG charts, a
+        flowchart editor, canvas hex grids and an audio player followed as standalone
+        add-ons.
       </p>
       <p>
-        In July&nbsp;2026 that line was retired and Vanduo consolidated on a single
-        Vue&nbsp;3 package,
+        A Vue&nbsp;3 layer (<code>@vanduo-oss/vue</code>) arrived in June&nbsp;2026, with
+        the design tokens extracted into a framework-agnostic package
+        (<code>@vanduo-oss/core</code>) so both engines could share one source of truth.
+        That made Vanduo briefly <em>dual-engine</em> — and meant every component existed
+        twice, so every change had to be built and verified twice.
+      </p>
+      <p>
+        In July&nbsp;2026 the dual-engine line was retired and Vanduo consolidated on a
+        single Vue&nbsp;3 package,
         <a href="https://www.npmjs.com/package/@vanduo-oss/vd3" rel="noopener"><code>@vanduo-oss/vd3</code></a>
         — tokens, CSS and typed components together, with <code>vue</code> as its only
         peer dependency and no global runtime — plus
