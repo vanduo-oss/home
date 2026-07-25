@@ -456,8 +456,8 @@
         <code>data-theme</code> and related attributes on the document root.
       </p>
       <p>
-        It began on <strong>31&nbsp;January&nbsp;2026</strong> as one thing only: a
-        zero-build <em>Vanilla</em> CSS/JS framework, <code>@vanduo-oss/framework</code>.
+        It began as one thing only: a zero-build <em>Vanilla</em> CSS/JS framework,
+        <code>@vanduo-oss/framework</code>.
         No build step, no dependencies, no framework to adopt — drop in a stylesheet,
         write <code>.vd-*</code> classes and <code>data-vd-*</code> attributes, and drive
         the rest through an imperative <code>window.Vanduo</code> runtime. SVG charts, a
@@ -472,15 +472,23 @@
         twice, so every change had to be built and verified twice.
       </p>
       <p>
-        In July&nbsp;2026 the dual-engine line was retired and Vanduo consolidated on a
-        single Vue&nbsp;3 package,
+        In July&nbsp;2026 that line was retired — a deliberate narrowing, not an
+        abandonment. Two engines meant paying for every component twice, and building a
+        runtime of one's own on top of that. With finite time and resources, the honest
+        choice was to stop spreading a small effort thinly, back the web engine best
+        suited to the work, and let a mature framework solve the problems that are not
+        Vanduo's to solve.
+      </p>
+      <p>
         <a href="https://www.npmjs.com/package/@vanduo-oss/vd3" rel="noopener"><code>@vanduo-oss/vd3</code></a>
-        — tokens, CSS and typed components together, with <code>vue</code> as its only
-        peer dependency and no global runtime — plus
+        carries the same system forward rather than replacing it: the same design
+        language, the same <code>Vd*</code> components and composables, the same
+        <code>--vd-*</code> token model — now in a single Vue&nbsp;3 package with
+        <code>vue</code> as its only peer dependency and no global runtime.
         <a href="https://www.npmjs.com/package/@vanduo-oss/vd3-cbun" rel="noopener"><code>@vanduo-oss/vd3-cbun</code></a>
-        for the heavier canvas and editor components as tree-shakeable subpath exports.
-        The retired packages remain published and installable; they are deprecated, not
-        removed, so nothing built on them breaks. The
+        adds the heavier canvas and editor components as tree-shakeable subpath exports.
+        A narrower scope, maintained properly. The retired packages remain published and
+        installable — deprecated, not removed — so nothing built on them breaks, and the
         <a href="https://vanduo-oss.github.io/vd3-docs/guides/migration" rel="noopener">migration guide</a>
         maps the old packages onto the new one.
       </p>
