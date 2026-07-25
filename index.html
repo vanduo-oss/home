@@ -84,10 +84,18 @@
   }
   </script>
 
-  <!-- Apply a stored theme before first paint (avoids flash); no choice → follow the OS. -->
+  <!--
+    Apply a stored theme before first paint (avoids flash); no choice → follow the OS.
+
+    The key is vd3's own: `vanduo-theme-preference`, holding one of
+    "system" | "dark" | "light" (vd3's THEME_MODES). This page is plain HTML with
+    no vd3 dependency, but it deliberately speaks vd3's theming contract, so a
+    visitor who picks dark here still gets dark on vanduo-oss.github.io/vd3-docs
+    and vice versa. "system" and any unknown value fall through to the OS.
+  -->
   <script>
     try {
-      var t = localStorage.getItem('theme');
+      var t = localStorage.getItem('vanduo-theme-preference');
       if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
     } catch (e) {}
   </script>
@@ -102,38 +110,47 @@
     }
 
     /* --- Theme tokens: light by default, dark via OS unless overridden, or via explicit toggle --- */
+    /*
+      Every value below is a literal copy of a real @vanduo-oss/vd3 token, named
+      in the comment beside it. This page ships no vd3 stylesheet on purpose —
+      vd3 has no tokens-only CSS entry, so consuming var(--vd-*) would mean
+      pulling ~62 KB gz of core CSS to obtain five custom properties, on a page
+      that is 9.5 KB gz in total. Copying the values with stated provenance keeps
+      the palette provably vd3's at no transfer cost. If vd3 ever ships
+      `@vanduo-oss/vd3/css/tokens`, switch these to var(--vd-*) references.
+    */
     :root {
-      --bg: #ffffff;
-      --fg: #1a1d20;
-      --muted: #868e96;
-      --rule: #e6e8eb;
-      --accent: #228be6;
+      --bg: #ffffff;   /* vd3 --vd-bg-primary */
+      --fg: #1a1d20;   /* vd3 --vd-color-gray-900 / --vd-text-primary */
+      --muted: #868e96; /* vd3 --vd-oc-gray-6 / --vd-color-gray-500 */
+      --rule: #e5e8eb; /* vd3 --vd-fib-slate-1 */
+      --accent: #228be6; /* vd3 --vd-oc-blue-6 / --vd-info-6 */
       color-scheme: light;
     }
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
-        --bg: #0d1117;
-        --fg: #f0f3f6;
-        --muted: #8b949e;
-        --rule: #20262d;
-        --accent: #4dabf7;
+        --bg: #0d1117;   /* vd3 --vd-oc-charcoal-9 */
+        --fg: #f1f3f5;   /* vd3 --vd-oc-gray-1 */
+        --muted: #8b939a; /* vd3 --vd-fib-slate-5 */
+        --rule: #212529; /* vd3 --vd-oc-gray-9 */
+        --accent: #4dabf7; /* vd3 --vd-oc-blue-4 / --vd-info-4 */
         color-scheme: dark;
       }
     }
     :root[data-theme="dark"] {
-      --bg: #0d1117;
-      --fg: #f0f3f6;
-      --muted: #8b949e;
-      --rule: #20262d;
-      --accent: #4dabf7;
+      --bg: #0d1117;   /* vd3 --vd-oc-charcoal-9 */
+      --fg: #f1f3f5;   /* vd3 --vd-oc-gray-1 */
+      --muted: #8b939a; /* vd3 --vd-fib-slate-5 */
+      --rule: #212529; /* vd3 --vd-oc-gray-9 */
+      --accent: #4dabf7; /* vd3 --vd-oc-blue-4 / --vd-info-4 */
       color-scheme: dark;
     }
     :root[data-theme="light"] {
-      --bg: #ffffff;
-      --fg: #1a1d20;
-      --muted: #868e96;
-      --rule: #e6e8eb;
-      --accent: #228be6;
+      --bg: #ffffff;   /* vd3 --vd-bg-primary */
+      --fg: #1a1d20;   /* vd3 --vd-color-gray-900 */
+      --muted: #868e96; /* vd3 --vd-oc-gray-6 */
+      --rule: #e5e8eb; /* vd3 --vd-fib-slate-1 */
+      --accent: #228be6; /* vd3 --vd-oc-blue-6 / --vd-info-6 */
       color-scheme: light;
     }
 
@@ -515,7 +532,8 @@
           || (!root.hasAttribute('data-theme') && media.matches);
         var next = isDark ? 'light' : 'dark';
         root.setAttribute('data-theme', next);
-        try { localStorage.setItem('theme', next); } catch (e) {}
+        // vd3's key and value vocabulary — see the pre-paint script above.
+        try { localStorage.setItem('vanduo-theme-preference', next); } catch (e) {}
       });
     })();
   </script>
