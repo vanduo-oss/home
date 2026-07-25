@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vanduo</title>
-  <meta name="description" content="Vanduo — a design system by vanduo-oss. Legacy: the dual-engine Vanilla + Vue 3 system. Perspective: the standalone Vue 3 line." />
+  <meta name="description" content="Vanduo — a design system by vanduo-oss. Perspective: the standalone Vue 3 line, and the only line under active development. Legacy, the dual-engine Vanilla + Vue 3 system, is retired." />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)" />
   <link rel="icon" type="image/svg+xml" href="vanduo-oss-animated.svg" />
@@ -12,7 +12,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Vanduo" />
-  <meta property="og:description" content="A design system by vanduo-oss — legacy (Vanilla + Vue 3) and perspective (standalone Vue 3)." />
+  <meta property="og:description" content="A design system by vanduo-oss — perspective (standalone Vue 3), the active line. The legacy dual-engine line is retired." />
   <meta property="og:url" content="https://vanduo.dev/" />
   <meta property="og:image" content="https://vanduo.dev/vanduo-oss-animated.svg" />
 
@@ -129,6 +129,26 @@
       line-height: 1.55;
       color: var(--muted);
     }
+    /* Pill after a line's name — used to mark the retired line. */
+    .tag {
+      display: inline-block;
+      margin-left: 0.5rem;
+      padding: 0.1rem 0.45rem;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      font-family: var(--fallback, sans-serif);
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      vertical-align: 0.18em;
+    }
+    /* The retired line stays reachable but reads as an archive, not an option. */
+    .col-archived .label,
+    .col-archived .go { color: var(--muted); }
+    .col-archived:hover .label,
+    .col-archived:focus-visible .label { color: var(--fg); }
     .go {
       display: inline-flex;
       align-items: center;
@@ -255,15 +275,15 @@
     </div>
 
     <nav class="cols" aria-label="Vanduo lines">
-      <a class="col" href="https://vanduo-oss.github.io/vd2/">
-        <span class="label">legacy</span>
-        <p class="blurb">The original Vanduo — a dual-engine design system: a zero-build Vanilla CSS/JS framework and first-class Vue&nbsp;3 components on one shared set of design tokens.</p>
-        <span class="go">vd2 <span class="arrow" aria-hidden="true">↗</span></span>
-      </a>
       <a class="col" href="https://vanduo-oss.github.io/vd3-docs/">
         <span class="label">perspective</span>
-        <p class="blurb">The standalone Vue&nbsp;3 line — typed components, a composable for every interaction, and design tokens in a single package. No runtime, no ceremony.</p>
+        <p class="blurb">The standalone Vue&nbsp;3 line — typed components, a composable for every interaction, and design tokens in a single package. No runtime, no ceremony. The only line under active development.</p>
         <span class="go">vd3 docs <span class="arrow" aria-hidden="true">↗</span></span>
+      </a>
+      <a class="col col-archived" href="https://vanduo-oss.github.io/vd2/">
+        <span class="label">legacy<span class="tag">retired</span></span>
+        <p class="blurb">The original Vanduo — a dual-engine design system: a zero-build Vanilla CSS/JS framework and first-class Vue&nbsp;3 components on one shared set of design tokens. Retired in July&nbsp;2026; the packages stay on npm at their final versions and the docs stay online as a frozen reference.</p>
+        <span class="go">vd2 archive <span class="arrow" aria-hidden="true">↗</span></span>
       </a>
     </nav>
   </main>
