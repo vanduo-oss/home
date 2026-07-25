@@ -1,0 +1,5 @@
+# vanduo.dev — a single-page site; everything is crawlable.
+User-agent: *
+Allow: /
+
+Sitemap: https://vanduo.dev/sitemap.xml
