@@ -1,0 +1,35 @@
+schema: spec-driven
+
+context: |
+  Package: @vanduo-oss/home (private, not published). Static landing page for
+  vanduo.dev — the apex domain and sole holder of the CNAME. Stack: Vue 3 +
+  vite + vite-ssg (prerenders the single route `/`) + vue-router. No pinia,
+  no @unhead/vue — the page is one route with SEO baked into index.html and
+  prerendered output.
+  Dogfoods the PUBLISHED package "@vanduo-oss/vd3": "^1.1.0" — plugin
+  (VanduoVue), @vanduo-oss/vd3/css/core, design tokens via var(--vd-*), and
+  useThemePreference for the theme toggle. No link: sibling consumption; npm
+  only. Markup stays bespoke (no Vd* components) to guarantee pixel parity
+  with the prior static page.
+  Tests: Playwright visual parity against baselines captured from live
+  vanduo.dev before the rebuild. CI runs typecheck, lint, stylelint,
+  format:check, build, and visual parity on PRs; deploy.yml publishes dist/
+  to GitHub Pages at base `/` (apex vanduo.dev).
+  Changelog policy: site repo — no package changelog. OpenSpec tracks site
+  changes only.
+
+rules:
+  proposal:
+    - State which pages/routes are added, changed, or removed
+    - Always include a "Non-goals" section
+  specs:
+    - Use Given/When/Then scenario format under each requirement
+    - Use SHALL/MUST for normative requirements
+  design:
+    - Dogfood published @vanduo-oss/vd3 — no invented APIs; verify against package source
+    - home.css stays page/layout-only; vd3 owns token definitions and theme engine
+    - Visual parity with the prior static page is a hard requirement
+  tasks:
+    - Include vite-ssg build when pages change
+    - Include Playwright visual-baseline capture/update when markup or styles change
+    - Include Pages build_type switch step when deploy workflow is first added
