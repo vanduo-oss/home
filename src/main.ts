@@ -11,6 +11,8 @@ export const createApp = ViteSSG(
     base: import.meta.env.BASE_URL,
   },
   ({ app }) => {
-    app.use(VanduoVue, { themeDefaults: { FONT: "system" } });
+    app.use(VanduoVue, {
+      themeDefaults: { THEME: "system", FONT: "system" },
+    });
   },
 );

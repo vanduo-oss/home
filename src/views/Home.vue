@@ -3,13 +3,14 @@ import { useThemePreference } from "@vanduo-oss/vd3";
 
 const theme = useThemePreference();
 
+function isEffectivelyDark(): boolean {
+  if (theme.state.theme === "dark") return true;
+  if (theme.state.theme === "light") return false;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
 function toggleTheme(): void {
-  const root = document.documentElement;
-  const media = window.matchMedia("(prefers-color-scheme: dark)");
-  const isDark =
-    root.getAttribute("data-theme") === "dark" ||
-    (!root.hasAttribute("data-theme") && media.matches);
-  theme.setTheme(isDark ? "light" : "dark");
+  theme.setTheme(isEffectivelyDark() ? "light" : "dark");
 }
 </script>
 
@@ -123,9 +124,7 @@ function toggleTheme(): void {
       A real heading. The wordmark above is SVG <path> data, so without this the
       page had no crawlable heading and the brand name existed only as vectors.
     -->
-      <h1 class="tagline">
-        A Vue&nbsp;3 design system by <span class="nowrap">vanduo-oss</span>
-      </h1>
+      <h1 class="tagline">vanduo open source software</h1>
     </div>
 
     <nav class="cols" aria-label="Vanduo lines">

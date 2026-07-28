@@ -43,3 +43,24 @@ for (const vp of viewports) {
     });
   }
 }
+
+for (const vp of viewports) {
+  for (const colorScheme of themes) {
+    test(`${vp.name} system ${colorScheme} os`, async ({ page }) => {
+      await page.setViewportSize({ width: vp.width, height: vp.height });
+      await page.emulateMedia({ colorScheme });
+      await page.addInitScript(() => {
+        localStorage.setItem("vanduo-theme-preference", "system");
+      });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.evaluate(() => document.fonts.ready);
+      await expect(page).toHaveScreenshot(
+        `${vp.name}-${colorScheme}-default.png`,
+        {
+          maxDiffPixelRatio: vp.maxDiffPixelRatio,
+          animations: "disabled",
+        },
+      );
+    });
+  }
+}
