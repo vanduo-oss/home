@@ -1,0 +1,51 @@
+{
+  "name": "@vanduo-oss/home",
+  "version": "1.0.0",
+  "description": "Landing page for vanduo.dev — dogfoods @vanduo-oss/vd3",
+  "private": true,
+  "type": "module",
+  "homepage": "https://vanduo.dev/",
+  "license": "MIT",
+  "author": "vanduo-oss",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite-ssg build",
+    "preview": "vite preview --port 8787 --host",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "stylelint": "stylelint \"src/**/*.css\"",
+    "format": "prettier --write \"src/**/*.{ts,vue,css}\" \"tests/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.{ts,vue,css}\" \"tests/**/*.ts\"",
+    "typecheck": "vue-tsc --noEmit",
+    "test:e2e": "playwright test --project='Chromium Desktop'",
+    "test:capture-baseline": "playwright test --config=playwright.capture.config.ts"
+  },
+  "dependencies": {
+    "@vanduo-oss/vd3": "^1.1.0",
+    "vue": "^3.5.40",
+    "vue-router": "^5.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1",
+    "@typescript-eslint/parser": "8.62.0",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/tsconfig": "^0.9.1",
+    "eslint": "^10.7.0",
+    "eslint-plugin-vue": "^10.9.2",
+    "prettier": "^3.9.5",
+    "stylelint": "^17.14.0",
+    "stylelint-config-standard": "^40.0.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.5",
+    "vite-ssg": "^28.3.0",
+    "vue-eslint-parser": "10.4.1",
+    "vue-tsc": "^3.3.7"
+  },
+  "engines": {
+    "node": ">=24",
+    "pnpm": ">=10"
+  },
+  "packageManager": "pnpm@10.28.2"
+}

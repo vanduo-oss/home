@@ -1,0 +1,244 @@
+<script setup lang="ts">
+import { useThemePreference } from "@vanduo-oss/vd3";
+
+const theme = useThemePreference();
+
+function toggleTheme(): void {
+  const root = document.documentElement;
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  const isDark =
+    root.getAttribute("data-theme") === "dark" ||
+    (!root.hasAttribute("data-theme") && media.matches);
+  theme.setTheme(isDark ? "light" : "dark");
+}
+</script>
+
+<template>
+  <div class="corner">
+    <button
+      class="corner-btn theme-toggle"
+      type="button"
+      aria-label="Toggle dark and light theme"
+      @click="toggleTheme"
+    >
+      <svg
+        class="icon-sun"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="4" />
+        <path
+          d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+        />
+      </svg>
+      <svg
+        class="icon-moon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+    </button>
+    <a
+      class="corner-btn gh-link"
+      href="https://github.com/vanduo-oss"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Vanduo on GitHub (opens in a new tab)"
+    >
+      <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+        <path
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+        />
+      </svg>
+    </a>
+  </div>
+
+  <main class="wrap">
+    <div class="masthead">
+      <div class="hero">
+        <!-- Vanduo OSS logo + wordmark. Inlined so the wordmark follows the page
+           theme (including the manual toggle), not only the OS setting. -->
+        <svg
+          viewBox="0 0 200 200"
+          role="img"
+          aria-label="Vanduo OSS"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>Vanduo OSS</title>
+          <defs>
+            <radialGradient id="blueGlow" cx="30%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#9ebbf8" />
+              <stop offset="35%" stop-color="#4a85e8" />
+              <stop offset="80%" stop-color="#1b458b" />
+              <stop offset="100%" stop-color="#0c1f44" />
+            </radialGradient>
+            <radialGradient id="greyNode" cx="30%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#f8fafc" />
+              <stop offset="50%" stop-color="#94a3b8" />
+              <stop offset="100%" stop-color="#1e293b" />
+            </radialGradient>
+            <filter
+              id="dropShadow"
+              x="-20%"
+              y="-20%"
+              width="140%"
+              height="140%"
+            >
+              <feDropShadow
+                dx="0"
+                dy="4"
+                stdDeviation="6"
+                flood-color="#000000"
+                flood-opacity="0.6"
+              />
+            </filter>
+          </defs>
+
+          <g class="bot-container" filter="url(#dropShadow)">
+            <circle cx="65" cy="130" r="22" fill="url(#greyNode)" />
+            <circle cx="135" cy="130" r="22" fill="url(#greyNode)" />
+            <circle cx="100" cy="90" r="58" fill="url(#blueGlow)" />
+          </g>
+
+          <path
+            class="wordmark"
+            fill="#4a85e8"
+            d="M39.39 182 34.39 172.44H36.27L40.45 180.8H40.47L44.73 172.44H46.51L41.51 182ZM53.65 182.18Q51.93 182.18 50.82 182Q49.7 181.83 49.16 181.22Q48.61 180.61 48.61 179.34Q48.61 178.03 49.12 177.42Q49.63 176.81 50.74 176.63Q51.85 176.45 53.65 176.45Q55.11 176.45 56.1 176.51Q57.09 176.58 57.87 176.75Q57.85 175.64 57.72 175.01Q57.58 174.37 57.22 174.06Q56.85 173.76 56.15 173.67Q55.45 173.58 54.29 173.58Q52.96 173.58 52.21 173.64Q51.46 173.7 51.12 173.85Q50.78 174 50.69 174.28Q50.6 174.56 50.6 175.01H49.01Q49.01 174.11 49.25 173.57Q49.5 173.02 50.09 172.74Q50.68 172.45 51.7 172.35Q52.73 172.25 54.29 172.25Q55.97 172.25 56.99 172.47Q58.02 172.69 58.55 173.25Q59.09 173.81 59.27 174.81Q59.46 175.82 59.46 177.4V182H57.87V181.34Q57.58 181.64 57.09 181.83Q56.59 182.01 55.76 182.1Q54.94 182.18 53.65 182.18ZM53.65 180.89Q55.07 180.89 55.92 180.85Q56.76 180.82 57.18 180.67Q57.6 180.52 57.73 180.19Q57.87 179.86 57.87 179.26V177.79L53.65 177.74Q52.53 177.73 51.84 177.77Q51.16 177.82 50.8 177.97Q50.45 178.12 50.33 178.45Q50.21 178.78 50.21 179.34Q50.21 179.88 50.33 180.19Q50.45 180.51 50.8 180.66Q51.16 180.8 51.84 180.85Q52.53 180.89 53.65 180.89ZM62.09 182V172.44H63.68V173.71Q64.04 173.23 64.56 172.9Q65.09 172.58 65.97 172.42Q66.86 172.25 68.29 172.25Q70.17 172.25 71.25 172.62Q72.34 172.99 72.79 173.92Q73.25 174.86 73.25 176.58V182H71.65V176.58Q71.65 175.6 71.48 175Q71.32 174.4 70.91 174.1Q70.51 173.79 69.81 173.69Q69.1 173.58 68.01 173.58Q66.35 173.58 65.41 173.86Q64.46 174.13 64.07 174.72Q63.68 175.3 63.68 176.24V182ZM81.43 182.18Q79.83 182.18 78.71 182.02Q77.58 181.86 76.9 181.36Q76.21 180.85 75.89 179.85Q75.58 178.85 75.58 177.17Q75.58 175.54 75.89 174.56Q76.21 173.58 76.9 173.08Q77.58 172.59 78.71 172.42Q79.83 172.25 81.43 172.25Q82.96 172.25 84.02 172.49Q85.08 172.72 85.69 173.52V169.25H87.28V182H85.69V180.9Q85.08 181.72 84.02 181.95Q82.96 182.18 81.43 182.18ZM85.69 177.17Q85.69 175.98 85.52 175.27Q85.35 174.55 84.91 174.19Q84.46 173.83 83.62 173.71Q82.78 173.58 81.43 173.58Q79.95 173.58 79.09 173.71Q78.22 173.83 77.82 174.19Q77.41 174.55 77.29 175.27Q77.17 175.98 77.17 177.17Q77.17 178.4 77.29 179.14Q77.41 179.88 77.82 180.24Q78.22 180.61 79.09 180.73Q79.95 180.85 81.43 180.85Q82.78 180.85 83.62 180.73Q84.46 180.61 84.91 180.24Q85.35 179.88 85.52 179.14Q85.69 178.4 85.69 177.17ZM94.85 182.18Q92.98 182.18 91.9 181.77Q90.82 181.36 90.36 180.39Q89.91 179.43 89.91 177.75V172.44H91.51V177.75Q91.51 178.7 91.66 179.31Q91.81 179.92 92.2 180.25Q92.59 180.59 93.3 180.72Q94.01 180.85 95.13 180.85Q96.79 180.85 97.74 180.58Q98.69 180.31 99.08 179.72Q99.48 179.14 99.48 178.2V172.44H101.07V182H99.48V180.73Q99.13 181.21 98.6 181.54Q98.06 181.86 97.18 182.02Q96.29 182.18 94.85 182.18ZM109.31 182.18Q107.71 182.18 106.59 182.02Q105.47 181.86 104.78 181.36Q104.09 180.85 103.78 179.85Q103.46 178.85 103.46 177.17Q103.46 175.54 103.78 174.56Q104.09 173.58 104.78 173.08Q105.47 172.59 106.59 172.42Q107.71 172.25 109.31 172.25Q110.92 172.25 112.04 172.42Q113.16 172.59 113.85 173.08Q114.54 173.58 114.85 174.56Q115.17 175.54 115.17 177.17Q115.17 178.85 114.85 179.85Q114.54 180.85 113.85 181.36Q113.16 181.86 112.04 182.02Q110.92 182.18 109.31 182.18ZM113.57 177.17Q113.57 175.98 113.45 175.27Q113.33 174.55 112.93 174.19Q112.52 173.83 111.66 173.71Q110.8 173.58 109.31 173.58Q107.84 173.58 106.97 173.71Q106.11 173.83 105.7 174.19Q105.3 174.55 105.18 175.27Q105.06 175.98 105.06 177.17Q105.06 178.4 105.18 179.14Q105.3 179.88 105.7 180.24Q106.11 180.61 106.97 180.73Q107.84 180.85 109.31 180.85Q110.8 180.85 111.66 180.73Q112.52 180.61 112.93 180.24Q113.33 179.88 113.45 179.14Q113.57 178.4 113.57 177.17ZM117.53 177.75V176.42H123.9V177.75ZM132.11 182.18Q130.51 182.18 129.39 182.02Q128.27 181.86 127.58 181.36Q126.89 180.85 126.58 179.85Q126.26 178.85 126.26 177.17Q126.26 175.54 126.58 174.56Q126.89 173.58 127.58 173.08Q128.27 172.59 129.39 172.42Q130.51 172.25 132.11 172.25Q133.72 172.25 134.84 172.42Q135.96 172.59 136.64 173.08Q137.33 173.58 137.65 174.56Q137.96 175.54 137.96 177.17Q137.96 178.85 137.65 179.85Q137.33 180.85 136.64 181.36Q135.96 181.86 134.84 182.02Q133.72 182.18 132.11 182.18ZM136.37 177.17Q136.37 175.98 136.25 175.27Q136.13 174.55 135.72 174.19Q135.32 173.83 134.46 173.71Q133.6 173.58 132.11 173.58Q130.63 173.58 129.77 173.71Q128.91 173.83 128.5 174.19Q128.09 174.55 127.97 175.27Q127.85 175.98 127.85 177.17Q127.85 178.4 127.97 179.14Q128.09 179.88 128.5 180.24Q128.91 180.61 129.77 180.73Q130.63 180.85 132.11 180.85Q133.6 180.85 134.46 180.73Q135.32 180.61 135.72 180.24Q136.13 179.88 136.25 179.14Q136.37 178.4 136.37 177.17ZM145.73 182.18Q143.98 182.18 142.93 182.07Q141.87 181.95 141.32 181.63Q140.78 181.32 140.59 180.74Q140.41 180.16 140.41 179.23H141.93Q141.93 179.75 142.01 180.07Q142.08 180.39 142.43 180.56Q142.78 180.73 143.57 180.79Q144.35 180.85 145.77 180.85Q147.27 180.85 148.11 180.79Q148.94 180.73 149.31 180.56Q149.67 180.39 149.75 180.07Q149.83 179.74 149.83 179.21Q149.83 178.56 149.71 178.24Q149.6 177.92 149.16 177.8Q148.73 177.69 147.79 177.68L143.98 177.64Q142.52 177.63 141.74 177.39Q140.97 177.16 140.69 176.58Q140.41 175.99 140.41 174.91Q140.41 173.91 140.72 173.36Q141.03 172.81 141.69 172.58Q142.36 172.35 143.42 172.3Q144.48 172.25 145.98 172.25Q147.75 172.25 148.79 172.36Q149.84 172.47 150.36 172.77Q150.87 173.07 151.04 173.64Q151.2 174.21 151.2 175.12H149.67Q149.67 174.58 149.6 174.27Q149.52 173.96 149.19 173.81Q148.87 173.67 148.13 173.62Q147.4 173.58 146.07 173.58Q144.56 173.58 143.72 173.62Q142.88 173.65 142.51 173.77Q142.13 173.9 142.05 174.17Q141.97 174.44 141.97 174.91Q141.97 175.39 142.02 175.67Q142.08 175.95 142.31 176.09Q142.54 176.23 143.07 176.28Q143.59 176.32 144.54 176.33L147.82 176.36Q149.3 176.38 150.06 176.61Q150.83 176.84 151.11 177.45Q151.39 178.06 151.39 179.21Q151.39 180.25 151.09 180.85Q150.78 181.44 150.12 181.73Q149.45 182.02 148.37 182.1Q147.29 182.18 145.73 182.18ZM159.42 182.18Q157.67 182.18 156.62 182.07Q155.56 181.95 155.01 181.63Q154.47 181.32 154.28 180.74Q154.1 180.16 154.1 179.23H155.62Q155.62 179.75 155.7 180.07Q155.77 180.39 156.12 180.56Q156.47 180.73 157.26 180.79Q158.04 180.85 159.46 180.85Q160.96 180.85 161.8 180.79Q162.63 180.73 163 180.56Q163.36 180.39 163.44 180.07Q163.52 179.74 163.52 179.21Q163.52 178.56 163.4 178.24Q163.29 177.92 162.85 177.8Q162.42 177.69 161.48 177.68L157.67 177.64Q156.21 177.63 155.43 177.39Q154.66 177.16 154.38 176.58Q154.1 175.99 154.1 174.91Q154.1 173.91 154.41 173.36Q154.72 172.81 155.38 172.58Q156.05 172.35 157.11 172.3Q158.17 172.25 159.67 172.25Q161.44 172.25 162.48 172.36Q163.53 172.47 164.05 172.77Q164.56 173.07 164.73 173.64Q164.89 174.21 164.89 175.12H163.36Q163.36 174.58 163.29 174.27Q163.21 173.96 162.88 173.81Q162.56 173.67 161.82 173.62Q161.09 173.58 159.76 173.58Q158.25 173.58 157.41 173.62Q156.57 173.65 156.2 173.77Q155.82 173.9 155.74 174.17Q155.66 174.44 155.66 174.91Q155.66 175.39 155.71 175.67Q155.77 175.95 156 176.09Q156.23 176.23 156.76 176.28Q157.28 176.32 158.23 176.33L161.51 176.36Q162.99 176.38 163.75 176.61Q164.52 176.84 164.8 177.45Q165.08 178.06 165.08 179.21Q165.08 180.25 164.78 180.85Q164.47 181.44 163.81 181.73Q163.14 182.02 162.06 182.1Q160.98 182.18 159.42 182.18Z"
+          />
+        </svg>
+      </div>
+
+      <!--
+      A real heading. The wordmark above is SVG <path> data, so without this the
+      page had no crawlable heading and the brand name existed only as vectors.
+    -->
+      <h1 class="tagline">
+        A Vue&nbsp;3 design system by <span class="nowrap">vanduo-oss</span>
+      </h1>
+    </div>
+
+    <nav class="cols" aria-label="Vanduo lines">
+      <a class="col" href="https://vanduo-oss.github.io/vd3-docs/">
+        <span class="label">perspective</span>
+        <p class="blurb">
+          The standalone Vue&nbsp;3 line — typed components, a composable for
+          every interaction, and design tokens in a single package. No runtime,
+          no ceremony. The only line under active development.
+        </p>
+        <span class="go"
+          >vd3 docs <span class="arrow" aria-hidden="true">↗</span></span
+        >
+      </a>
+      <a class="col col-archived" href="https://github.com/vanduo-oss/vd2">
+        <span class="label">legacy<span class="tag">retired</span></span>
+        <p class="blurb">
+          The original Vanduo — a dual-engine design system: a zero-build
+          Vanilla CSS/JS framework and first-class Vue&nbsp;3 components on one
+          shared set of design tokens. Retired in July&nbsp;2026. Its packages
+          stay published on npm at their final versions; its documentation site
+          is offline, but the source is archived and readable.
+        </p>
+        <span class="go"
+          >vd2 repository <span class="arrow" aria-hidden="true">↗</span></span
+        >
+      </a>
+    </nav>
+
+    <!--
+      The story, in prose. Structured data tells a machine what Vanduo *is*;
+      this tells a crawler or an LLM what happened and why — which is the part
+      that cannot be inferred from a logo and two links.
+    -->
+    <section class="story" aria-labelledby="story-heading">
+      <h2 id="story-heading">About Vanduo</h2>
+      <p>
+        <strong>Vanduo</strong> is an open-source design system published under
+        the
+        <a href="https://www.npmjs.com/org/vanduo-oss" rel="noopener"
+          >@vanduo-oss</a
+        >
+        npm scope and developed at
+        <a href="https://github.com/vanduo-oss" rel="noopener"
+          >github.com/vanduo-oss</a
+        >. Its components are named <code>Vd*</code>, its CSS classes are
+        namespaced <code>vd-*</code>, and its theming runs entirely on
+        <code>--vd-*</code> custom properties driven by
+        <code>data-palette</code>, <code>data-primary</code>,
+        <code>data-theme</code> and related attributes on the document root.
+      </p>
+      <p>
+        It began as one thing only: a zero-build <em>Vanilla</em> CSS/JS
+        framework, <code>@vanduo-oss/framework</code>. No build step, no
+        dependencies, no framework to adopt — drop in a stylesheet, write
+        <code>.vd-*</code> classes and <code>data-vd-*</code> attributes, and
+        drive the rest through an imperative <code>window.Vanduo</code> runtime.
+        SVG charts, a flowchart editor, canvas hex grids and an audio player
+        followed as standalone add-ons.
+      </p>
+      <p>
+        A Vue&nbsp;3 layer (<code>@vanduo-oss/vue</code>) arrived in
+        June&nbsp;2026, with the design tokens extracted into a
+        framework-agnostic package (<code>@vanduo-oss/core</code>) so both
+        engines could share one source of truth. That made Vanduo briefly
+        <em>dual-engine</em> — and meant every component existed twice, so every
+        change had to be built and verified twice.
+      </p>
+      <p>
+        In July&nbsp;2026 that line was retired — a deliberate narrowing, not an
+        abandonment. Two engines meant paying for every component twice, and
+        building a runtime of one's own on top of that. With finite time and
+        resources, the honest choice was to stop spreading a small effort
+        thinly, back the web engine best suited to the work, and let a mature
+        framework solve the problems that are not Vanduo's to solve.
+      </p>
+      <p>
+        <a href="https://www.npmjs.com/package/@vanduo-oss/vd3" rel="noopener"
+          ><code>@vanduo-oss/vd3</code></a
+        >
+        carries the same system forward rather than replacing it: the same
+        design language, the same <code>Vd*</code> components and composables,
+        the same <code>--vd-*</code> token model — now in a single Vue&nbsp;3
+        package with <code>vue</code> as its only peer dependency and no global
+        runtime.
+        <a
+          href="https://www.npmjs.com/package/@vanduo-oss/vd3-cbun"
+          rel="noopener"
+          ><code>@vanduo-oss/vd3-cbun</code></a
+        >
+        adds the heavier canvas and editor components as tree-shakeable subpath
+        exports. A narrower scope, maintained properly. The retired packages
+        remain published and installable — deprecated, not removed — so nothing
+        built on them breaks, and the
+        <a
+          href="https://vanduo-oss.github.io/vd3-docs/guides/migration"
+          rel="noopener"
+          >migration guide</a
+        >
+        maps the old packages onto the new one.
+      </p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <a href="https://vanduo-oss.github.io/vd3-docs/" rel="noopener"
+      >Documentation</a
+    >
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/vanduo-oss" rel="noopener">GitHub</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://www.npmjs.com/org/vanduo-oss" rel="noopener">npm</a>
+    <span aria-hidden="true">·</span>
+    <span>MIT licensed</span>
+  </footer>
+</template>
