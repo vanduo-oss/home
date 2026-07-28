@@ -32,9 +32,10 @@ CSS import order: `@layer vd3, home` via [src/styles/index.css](src/styles/index
 — vd3 core in `layer(vd3)`, page rules in `layer(home)`.
 
 Visual parity gate: Playwright snapshots captured from live vanduo.dev before
-the rebuild; parity tests allow `maxDiffPixelRatio: 0.04` because static HTML
-vs SSG hydration produces ~3.4% subpixel antialiasing fringe deltas only (verified:
-diff pairs are white↔muted-gray glyph edges, not layout or color blocks).
+the rebuild; parity tests allow per-viewport `maxDiffPixelRatio` because static
+HTML vs SSG hydration produces subpixel antialiasing fringe deltas only (desktop
+~3.4%, mobile ~5% on Linux CI vs macOS baselines — verified: diff pairs are
+white↔muted-gray glyph edges, not layout or color blocks).
 
 ## Theme contract continuity
 
