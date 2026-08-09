@@ -127,30 +127,74 @@ function toggleTheme(): void {
       <h1 class="tagline">vanduo open source software</h1>
     </div>
 
-    <nav class="cols" aria-label="Vanduo lines">
-      <a class="col" href="https://vanduo-oss.github.io/vd3-docs/">
-        <span class="label">perspective</span>
+    <nav class="lines" aria-label="Vanduo lines">
+      <a class="line" href="https://vanduo-oss.github.io/vd3-docs/">
+        <span class="label label-mono">UI</span>
         <p class="blurb">
           The standalone Vue&nbsp;3 line — typed components, a composable for
-          every interaction, and design tokens in a single package. No runtime,
-          no ceremony. The only line under active development.
+          every interaction, and design tokens in a single package.
         </p>
-        <span class="go"
-          >vd3 docs <span class="arrow" aria-hidden="true">↗</span></span
-        >
+        <div class="aside">
+          <p class="note">
+            No runtime, no ceremony. The only line under active development.
+          </p>
+          <span class="go"
+            >vd3 docs <span class="arrow" aria-hidden="true">↗</span></span
+          >
+        </div>
       </a>
-      <a class="col col-archived" href="https://github.com/vanduo-oss/vd2">
-        <span class="label">legacy<span class="tag">retired</span></span>
+      <a class="line" href="https://labs.vanduo.dev" rel="noopener">
+        <span class="label label-mono">AI</span>
         <p class="blurb">
-          The original Vanduo — a dual-engine design system: a zero-build
-          Vanilla CSS/JS framework and first-class Vue&nbsp;3 components on one
-          shared set of design tokens. Retired in July&nbsp;2026. Its packages
-          stay published on npm at their final versions; its documentation site
-          is offline, but the source is archived and readable.
+          Experimental components for the Vanduo ecosystem — in-browser AI chat,
+          search, and live demos.
         </p>
-        <span class="go"
-          >vd2 repository <span class="arrow" aria-hidden="true">↗</span></span
+        <div class="aside">
+          <p class="note">Zero runtime dependencies.</p>
+          <span class="go"
+            >labs <span class="arrow" aria-hidden="true">↗</span></span
+          >
+        </div>
+      </a>
+      <a
+        class="line line-archived"
+        href="https://github.com/vanduo-oss/framework"
+      >
+        <span class="label">original<span class="tag">retired</span></span>
+        <p class="blurb">
+          The first Vanduo — a zero-build Vanilla CSS/JS framework and its
+          documentation. Drop in a stylesheet, write .vd-* classes, drive the
+          rest through window.Vanduo.
+        </p>
+        <div class="aside">
+          <p class="note">
+            Still public under vanduo-oss — framework and docs repos, archived
+            and readable.
+          </p>
+          <span class="go"
+            >framework repository
+            <span class="arrow" aria-hidden="true">↗</span></span
+          >
+        </div>
+      </a>
+      <a class="line line-archived" href="https://github.com/vanduo-oss/vd2">
+        <span class="label label-mono"
+          >vd2<span class="tag">retired</span></span
         >
+        <p class="blurb">
+          The dual-engine line — Vanilla framework and first-class Vue&nbsp;3
+          components on one shared set of design tokens.
+        </p>
+        <div class="aside">
+          <p class="note">
+            Retired July&nbsp;2026. Packages stay on npm; docs offline, source
+            archived.
+          </p>
+          <span class="go"
+            >vd2 repository
+            <span class="arrow" aria-hidden="true">↗</span></span
+          >
+        </div>
       </a>
     </nav>
 
