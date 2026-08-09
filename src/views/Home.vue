@@ -263,9 +263,7 @@ function toggleTheme(): void {
         exports. A narrower scope, maintained properly. The retired packages
         remain published and installable — deprecated, not removed — so nothing
         built on them breaks, and the
-        <a
-          href="https://vd3.vanduo.dev/guides/migration"
-          rel="noopener"
+        <a href="https://vd3.vanduo.dev/guides/migration" rel="noopener"
           >migration guide</a
         >
         maps the old packages onto the new one.
@@ -274,9 +272,7 @@ function toggleTheme(): void {
   </main>
 
   <footer class="foot">
-    <a href="https://vd3.vanduo.dev/" rel="noopener"
-      >Documentation</a
-    >
+    <a href="https://vd3.vanduo.dev/" rel="noopener">Documentation</a>
     <span aria-hidden="true">·</span>
     <a href="https://github.com/vanduo-oss" rel="noopener">GitHub</a>
     <span aria-hidden="true">·</span>
