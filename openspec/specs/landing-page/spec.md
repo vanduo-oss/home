@@ -51,7 +51,7 @@ localStorage.
 
 #### Scenario: theme preference round-trips with vd3-docs
 - **GIVEN** a visitor sets dark theme on vanduo.dev
-- **WHEN** they navigate to vanduo-oss.github.io/vd3-docs
+- **WHEN** they navigate to vd3.vanduo.dev
 - **THEN** dark theme is applied (same localStorage key)
 
 ### Requirement: CI and deploy pipeline

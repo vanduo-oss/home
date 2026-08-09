@@ -128,7 +128,7 @@ function toggleTheme(): void {
     </div>
 
     <nav class="lines" aria-label="Vanduo lines">
-      <a class="line" href="https://vanduo-oss.github.io/vd3-docs/">
+      <a class="line" href="https://vd3.vanduo.dev/">
         <span class="label label-mono">UI</span>
         <p class="blurb">
           The standalone Vue&nbsp;3 line — typed components, a composable for
@@ -264,7 +264,7 @@ function toggleTheme(): void {
         remain published and installable — deprecated, not removed — so nothing
         built on them breaks, and the
         <a
-          href="https://vanduo-oss.github.io/vd3-docs/guides/migration"
+          href="https://vd3.vanduo.dev/guides/migration"
           rel="noopener"
           >migration guide</a
         >
@@ -274,7 +274,7 @@ function toggleTheme(): void {
   </main>
 
   <footer class="foot">
-    <a href="https://vanduo-oss.github.io/vd3-docs/" rel="noopener"
+    <a href="https://vd3.vanduo.dev/" rel="noopener"
       >Documentation</a
     >
     <span aria-hidden="true">·</span>
