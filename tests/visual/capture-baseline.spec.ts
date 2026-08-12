@@ -29,7 +29,7 @@ for (const vp of viewports) {
         localStorage.setItem("vanduo-theme-preference", t);
       }, theme);
       await page.goto(LIVE_URL, { waitUntil: "networkidle" });
-      await page.locator(".theme-toggle").click();
+      await page.locator(".vd-theme-switcher-toggle").click();
       await expect(page).toHaveScreenshot(
         `${vp.name}-${theme}-after-toggle.png`,
         {

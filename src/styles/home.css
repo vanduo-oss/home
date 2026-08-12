@@ -13,6 +13,7 @@
   --muted: var(--vd-oc-gray-6);
   --rule: var(--vd-fib-slate-1);
   --accent: var(--vd-oc-blue-6);
+  --home-main-offset: calc(5rem + var(--vd-navbar-float-inset, 0.75rem));
 
   color-scheme: light;
 }
@@ -59,7 +60,7 @@ body {
   display: grid;
   grid-template-rows: 1fr auto;
   place-items: center;
-  padding: 2.5rem 1.25rem;
+  padding: var(--home-main-offset) 1.25rem 2.5rem;
   background: var(--bg);
   color: var(--fg);
   font-family:
@@ -92,6 +93,132 @@ body {
 
 .wrap :where(a:hover, a:focus-visible) {
   color: inherit;
+}
+
+.wrap :where(code) {
+  font-size: 0.92em;
+  padding: 0.05em 0.3em;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--rule) 55%, transparent);
+  color: var(--fg);
+}
+
+/* ── Floating glass navbar (dogfoods vd3; chrome specifics below) ── */
+
+.vd-navbar .vd-nav-link {
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0;
+}
+
+.vd-navbar-brand-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.vd-navbar-brand-wrap > a.vd-navbar-brand-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  padding: 0;
+  font-family: Michroma, sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: lowercase;
+  text-decoration: none;
+  color: inherit;
+  transform: none;
+}
+
+.vd-navbar-brand-wrap > a.vd-navbar-brand-link .vanduo-brand-mark-nav {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  overflow: visible;
+}
+
+.vd-navbar-brand-wrap
+  > a.vd-navbar-brand-link
+  .vanduo-brand-mark-nav
+  .vanduo-mark {
+  display: block;
+  flex-shrink: 0;
+  overflow: visible;
+
+  /* Optical align with Michroma “vanduo-oss” */
+  transform: translateY(0.06em);
+}
+
+.vd-navbar-brand-wrap > a.vd-navbar-brand-link .hero-title-text {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  transform: translateY(0.08em);
+}
+
+.vd-navbar-brand-wrap > a.vd-navbar-brand-link .hero-title-brand {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.navbar-actions-always {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: auto;
+  order: 99;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+@media (width >= 992px) {
+  .vd-navbar-brand {
+    order: 1;
+  }
+
+  .vd-navbar-menu {
+    order: 2;
+  }
+
+  .navbar-actions-always {
+    order: 3;
+    margin-left: 0;
+  }
+}
+
+@media (width <= 991.98px) {
+  .navbar-actions-always {
+    margin-right: 0.75rem;
+    order: 98;
+  }
+
+  .vd-navbar-toggle {
+    order: 99;
+    flex-shrink: 0;
+  }
+}
+
+/* Match vd3 theme switcher hit target to borderless glass-navbar chrome
+   (same pattern as vd3-docs `.navbar-actions-always .vd-theme-switcher-toggle`). */
+.navbar-actions-always .vd-theme-switcher-toggle {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid transparent;
+  border-radius: var(--vd-card-border-radius);
+  background: transparent;
+  color: var(--fg);
+  font-size: 1.2rem;
+}
+
+.navbar-actions-always .vd-theme-switcher-toggle:hover {
+  background: var(--vd-bg-secondary);
+  color: var(--accent);
+  border-color: transparent;
 }
 
 .hero {
@@ -161,31 +288,6 @@ body {
   font-size: 0.78rem;
   line-height: 1.5;
   color: var(--muted);
-}
-
-.tag {
-  display: inline-block;
-  margin-left: 0.5rem;
-  padding: 0.1rem 0.45rem;
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  font-family: var(--fallback, sans-serif);
-  font-size: 0.58rem;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--muted);
-  vertical-align: 0.18em;
-}
-
-.line-archived .label,
-.line-archived .go {
-  color: var(--muted);
-}
-
-.line-archived:hover .label,
-.line-archived:focus-visible .label {
-  color: var(--fg);
 }
 
 .go {
@@ -325,82 +427,6 @@ body {
   .story {
     font-size: 0.82rem;
   }
-}
-
-.corner {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  z-index: 10;
-}
-
-.corner-btn {
-  width: 2.4rem;
-  height: 2.4rem;
-  display: grid;
-  place-items: center;
-  padding: 0;
-  background: transparent;
-  color: var(--fg);
-  border: 1px solid var(--rule);
-  border-radius: 50%;
-  cursor: pointer;
-  text-decoration: none;
-  transition:
-    color 0.18s ease,
-    border-color 0.18s ease;
-}
-
-.corner-btn:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
-.corner-btn:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-.corner-btn svg {
-  width: 1.15rem;
-  height: 1.15rem;
-}
-
-.icon-moon {
-  display: none;
-}
-
-.icon-sun {
-  display: block;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .icon-sun {
-    display: none;
-  }
-
-  :root:not([data-theme="light"]) .icon-moon {
-    display: block;
-  }
-}
-
-:root[data-theme="dark"] .icon-sun {
-  display: none;
-}
-
-:root[data-theme="dark"] .icon-moon {
-  display: block;
-}
-
-:root[data-theme="light"] .icon-sun {
-  display: block;
-}
-
-:root[data-theme="light"] .icon-moon {
-  display: none;
 }
 
 .hero .bot-container {

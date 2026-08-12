@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vanduo — vanduo open source software</title>
-  <meta name="description" content="Vanduo is an open-source Vue 3 design system by vanduo-oss: typed Vd* components, a composable for every interaction, and DTCG design tokens in one package (@vanduo-oss/vd3). The earlier dual-engine Vanilla + Vue 3 line was retired in July 2026." />
+  <meta name="description" content="Vanduo is open-source software by vanduo-oss: a Vue 3 design system (@vanduo-oss/vd3, @vanduo-oss/vd3-cbun) and lightweight web-AI engines for hybrid search and on-device chat (@vanduo-oss/vdl-hybrid-search, @vanduo-oss/vdl-ai-chat)." />
   <link rel="canonical" href="https://vanduo.dev/" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)" />
@@ -15,7 +15,7 @@
   <meta property="og:site_name" content="Vanduo" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:title" content="Vanduo — vanduo open source software" />
-  <meta property="og:description" content="Typed Vd* components, a composable for every interaction, and DTCG design tokens in one package. Open source, Vue 3 only." />
+  <meta property="og:description" content="Vue 3 design system (vd3 / vd3-cbun) and lightweight web-AI engines for search and on-device chat. Open source under @vanduo-oss." />
   <meta property="og:url" content="https://vanduo.dev/" />
   <meta property="og:image" content="https://vanduo.dev/og-image.png" />
   <meta property="og:image:type" content="image/png" />
@@ -25,7 +25,7 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Vanduo — vanduo open source software" />
-  <meta name="twitter:description" content="Typed Vd* components, a composable for every interaction, and DTCG design tokens in one package. Open source, Vue 3 only." />
+  <meta name="twitter:description" content="Vue 3 design system (vd3 / vd3-cbun) and lightweight web-AI engines for search and on-device chat. Open source under @vanduo-oss." />
   <meta name="twitter:image" content="https://vanduo.dev/og-image.png" />
 
   <!--
@@ -45,7 +45,7 @@
         "alternateName": "Vanduo",
         "url": "https://vanduo.dev/",
         "logo": "https://vanduo.dev/og-image.png",
-        "description": "Open-source foundation building Vanduo, a developer-focused Vue 3 design system.",
+        "description": "Open-source foundation shipping a Vue 3 design system and lightweight web-AI components for search and on-device chat.",
         "sameAs": [
           "https://github.com/vanduo-oss",
           "https://www.npmjs.com/org/vanduo-oss"
@@ -73,10 +73,30 @@
       {
         "@type": "SoftwareSourceCode",
         "name": "@vanduo-oss/vd3-cbun",
-        "description": "Companion Vue 3 component bundle for Vanduo: charts, code editor, draw, flowchart, hex-grid and music-player as tree-shakeable subpath exports.",
+        "description": "Companion Vue 3 component bundle for Vanduo: charts, flowchart, hex-grid and music-player as tree-shakeable subpath exports.",
         "programmingLanguage": ["TypeScript", "Vue"],
         "runtimePlatform": "Vue 3",
         "codeRepository": "https://github.com/vanduo-oss/vd3-cbun",
+        "license": "https://opensource.org/licenses/MIT",
+        "author": { "@id": "https://vanduo.dev/#org" }
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "@vanduo-oss/vdl-hybrid-search",
+        "description": "Headless hybrid fuzzy + semantic search engine for documentation and curriculum corpora. Hosts wire Fuse.js and Transformers.js.",
+        "programmingLanguage": ["TypeScript", "JavaScript"],
+        "runtimePlatform": "Web",
+        "codeRepository": "https://github.com/vanduo-oss/vdl-hybrid-search",
+        "license": "https://opensource.org/licenses/MIT",
+        "author": { "@id": "https://vanduo.dev/#org" }
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "@vanduo-oss/vdl-ai-chat",
+        "description": "Headless on-device AI chat with FOSS guardrails. Hosts wire LiteRT or WebLLM.",
+        "programmingLanguage": ["TypeScript", "JavaScript"],
+        "runtimePlatform": "Web",
+        "codeRepository": "https://github.com/vanduo-oss/vdl-ai-chat",
         "license": "https://opensource.org/licenses/MIT",
         "author": { "@id": "https://vanduo.dev/#org" }
       }

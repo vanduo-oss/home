@@ -31,7 +31,7 @@ for (const vp of viewports) {
         localStorage.setItem("vanduo-theme-preference", t);
       }, theme);
       await page.goto("/", { waitUntil: "networkidle" });
-      await page.locator(".theme-toggle").click();
+      await page.locator(".vd-theme-switcher-toggle").click();
       await page.evaluate(() => document.fonts.ready);
       await expect(page).toHaveScreenshot(
         `${vp.name}-${theme}-after-toggle.png`,

@@ -39,10 +39,11 @@ Open Graph tags, Twitter card tags, and JSON-LD structured data graph.
 
 ### Requirement: vd3 dogfooding
 The site MUST consume the published `@vanduo-oss/vd3` npm package: import
-`@vanduo-oss/vd3/css/core`, register `VanduoVue`, and use `var(--vd-*)`
-token references for page colors. The theme toggle MUST use
-`useThemePreference()` and persist to `vanduo-theme-preference` in
-localStorage.
+`@vanduo-oss/vd3/css` (full tree, including navbar glass/float chrome),
+register `VanduoVue`, and use `var(--vd-*)` token references for page
+colors. The theme toggle MUST use `useThemePreference()` and persist to
+`vanduo-theme-preference` in localStorage. The top chrome MUST use the
+vd3 floating glass navbar pattern (`.vd-navbar-float` + `.vd-navbar-glass`).
 
 #### Scenario: theme preference persists across reload
 - **GIVEN** a visitor toggles the theme to dark on vanduo.dev

@@ -1,75 +1,98 @@
 <script setup lang="ts">
-import { useThemePreference } from "@vanduo-oss/vd3";
+import { ref } from "vue";
+import { useNavbarGlassScroll, VdThemeSwitcher } from "@vanduo-oss/vd3";
+import VanduoBrandMark from "@/components/VanduoBrandMark.vue";
 
-const theme = useThemePreference();
+const navRef = ref<HTMLElement | null>(null);
+const isScrolled = useNavbarGlassScroll(navRef);
+const menuOpen = ref(false);
 
-function isEffectivelyDark(): boolean {
-  if (theme.state.theme === "dark") return true;
-  if (theme.state.theme === "light") return false;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+function toggleMenu(): void {
+  menuOpen.value = !menuOpen.value;
 }
 
-function toggleTheme(): void {
-  theme.setTheme(isEffectivelyDark() ? "light" : "dark");
+function closeMenu(): void {
+  menuOpen.value = false;
 }
 </script>
 
 <template>
-  <div class="corner">
-    <button
-      class="corner-btn theme-toggle"
-      type="button"
-      aria-label="Toggle dark and light theme"
-      @click="toggleTheme"
-    >
-      <svg
-        class="icon-sun"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
+  <nav
+    ref="navRef"
+    class="vd-navbar vd-navbar-fixed vd-navbar-float vd-navbar-glass"
+    :class="{ 'vd-navbar-scrolled': isScrolled }"
+  >
+    <div class="vd-navbar-container">
+      <div class="vd-navbar-brand">
+        <div class="vd-navbar-brand-wrap">
+          <a
+            href="/"
+            class="vd-navbar-brand-link"
+            aria-label="Vanduo home"
+            @click="closeMenu"
+          >
+            <VanduoBrandMark size="2rem" class="vanduo-brand-mark-nav" />
+            <span class="hero-title-text">
+              <span class="hero-title-brand">vanduo-oss</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <div class="navbar-actions-always">
+        <VdThemeSwitcher :menu="false" />
+      </div>
+
+      <button
+        class="vd-navbar-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        :aria-expanded="menuOpen"
+        @click="toggleMenu"
       >
-        <circle cx="12" cy="12" r="4" />
-        <path
-          d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
-        />
-      </svg>
-      <svg
-        class="icon-moon"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
-      >
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-      </svg>
-    </button>
-    <a
-      class="corner-btn gh-link"
-      href="https://github.com/vanduo-oss"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Vanduo on GitHub (opens in a new tab)"
-    >
-      <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-        <path
-          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-        />
-      </svg>
-    </a>
-  </div>
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="vd-navbar-menu" :class="{ 'is-open': menuOpen }">
+        <ul class="vd-navbar-nav">
+          <li>
+            <a
+              class="vd-nav-link"
+              href="https://vd3.vanduo.dev/"
+              rel="noopener"
+              @click="closeMenu"
+              >Docs</a
+            >
+          </li>
+          <li>
+            <a
+              class="vd-nav-link"
+              href="https://labs.vanduo.dev"
+              rel="noopener"
+              @click="closeMenu"
+              >Labs</a
+            >
+          </li>
+          <li>
+            <a
+              class="vd-nav-link"
+              href="https://github.com/vanduo-oss"
+              target="_blank"
+              rel="noopener noreferrer"
+              @click="closeMenu"
+              >GitHub</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
   <main class="wrap">
     <div class="masthead">
       <div class="hero">
         <!-- Vanduo OSS logo + wordmark. Inlined so the wordmark follows the page
-           theme (including the manual toggle), not only the OS setting. -->
+           theme (including VdThemeSwitcher), not only the OS setting. -->
         <svg
           viewBox="0 0 200 200"
           role="img"
@@ -131,13 +154,15 @@ function toggleTheme(): void {
       <a class="line" href="https://vd3.vanduo.dev/">
         <span class="label label-mono">UI</span>
         <p class="blurb">
-          The standalone Vue&nbsp;3 line — typed components, a composable for
-          every interaction, and design tokens in a single package.
+          Vue&nbsp;3 design system —
+          <code>@vanduo-oss/vd3</code> ships typed <code>Vd*</code> components,
+          composables, and <code>--vd-*</code> tokens.
+          <code>@vanduo-oss/vd3-cbun</code> adds charts, flowchart, hex-grid,
+          and music-player as tree-shakeable subpaths. Peer dependency:
+          <code>vue</code>.
         </p>
         <div class="aside">
-          <p class="note">
-            No runtime, no ceremony. The only line under active development.
-          </p>
+          <p class="note">Docs and demos at vd3.vanduo.dev.</p>
           <span class="go"
             >vd3 docs <span class="arrow" aria-hidden="true">↗</span></span
           >
@@ -146,133 +171,82 @@ function toggleTheme(): void {
       <a class="line" href="https://labs.vanduo.dev" rel="noopener">
         <span class="label label-mono">AI</span>
         <p class="blurb">
-          Experimental components for the Vanduo ecosystem — in-browser AI chat,
-          search, and live demos.
+          Lightweight web-AI engines —
+          <code>@vanduo-oss/vdl-hybrid-search</code> (fuzzy + semantic search)
+          and <code>@vanduo-oss/vdl-ai-chat</code> (on-device LLM chat with
+          guardrails). Built to support vanduo-oss web work; live demos at
+          labs.vanduo.dev.
         </p>
         <div class="aside">
-          <p class="note">Zero runtime dependencies.</p>
+          <p class="note">
+            Headless packages; hosts wire Fuse, Transformers.js, and
+            LiteRT/WebLLM.
+          </p>
           <span class="go"
             >labs <span class="arrow" aria-hidden="true">↗</span></span
           >
         </div>
       </a>
-      <a
-        class="line line-archived"
-        href="https://github.com/vanduo-oss/framework"
-      >
-        <span class="label">original<span class="tag">retired</span></span>
-        <p class="blurb">
-          The first Vanduo — a zero-build Vanilla CSS/JS framework and its
-          documentation. Drop in a stylesheet, write .vd-* classes, drive the
-          rest through window.Vanduo.
-        </p>
-        <div class="aside">
-          <p class="note">
-            Still public under vanduo-oss — framework and docs repos, archived
-            and readable.
-          </p>
-          <span class="go"
-            >framework repository
-            <span class="arrow" aria-hidden="true">↗</span></span
-          >
-        </div>
-      </a>
-      <a class="line line-archived" href="https://github.com/vanduo-oss/vd2">
-        <span class="label label-mono"
-          >vd2<span class="tag">retired</span></span
-        >
-        <p class="blurb">
-          The dual-engine line — Vanilla framework and first-class Vue&nbsp;3
-          components on one shared set of design tokens.
-        </p>
-        <div class="aside">
-          <p class="note">
-            Retired July&nbsp;2026. Packages stay on npm; docs offline, source
-            archived.
-          </p>
-          <span class="go"
-            >vd2 repository
-            <span class="arrow" aria-hidden="true">↗</span></span
-          >
-        </div>
-      </a>
     </nav>
 
-    <!--
-      The story, in prose. Structured data tells a machine what Vanduo *is*;
-      this tells a crawler or an LLM what happened and why — which is the part
-      that cannot be inferred from a logo and two links.
-    -->
     <section class="story" aria-labelledby="story-heading">
       <h2 id="story-heading">About Vanduo</h2>
       <p>
-        <strong>Vanduo</strong> is an open-source design system published under
-        the
+        <strong>Vanduo</strong> is open-source software under the
         <a href="https://www.npmjs.com/org/vanduo-oss" rel="noopener"
           >@vanduo-oss</a
         >
-        npm scope and developed at
+        npm scope, developed at
         <a href="https://github.com/vanduo-oss" rel="noopener"
           >github.com/vanduo-oss</a
-        >. Its components are named <code>Vd*</code>, its CSS classes are
-        namespaced <code>vd-*</code>, and its theming runs entirely on
-        <code>--vd-*</code> custom properties driven by
-        <code>data-palette</code>, <code>data-primary</code>,
-        <code>data-theme</code> and related attributes on the document root.
+        >. Two complementary lines: a Vue&nbsp;3 design system for UI, and small
+        browser-friendly AI building blocks for search and on-device chat.
       </p>
       <p>
-        It began as one thing only: a zero-build <em>Vanilla</em> CSS/JS
-        framework, <code>@vanduo-oss/framework</code>. No build step, no
-        dependencies, no framework to adopt — drop in a stylesheet, write
-        <code>.vd-*</code> classes and <code>data-vd-*</code> attributes, and
-        drive the rest through an imperative <code>window.Vanduo</code> runtime.
-        SVG charts, a flowchart editor, canvas hex grids and an audio player
-        followed as standalone add-ons.
-      </p>
-      <p>
-        A Vue&nbsp;3 layer (<code>@vanduo-oss/vue</code>) arrived in
-        June&nbsp;2026, with the design tokens extracted into a
-        framework-agnostic package (<code>@vanduo-oss/core</code>) so both
-        engines could share one source of truth. That made Vanduo briefly
-        <em>dual-engine</em> — and meant every component existed twice, so every
-        change had to be built and verified twice.
-      </p>
-      <p>
-        In July&nbsp;2026 that line was retired — a deliberate narrowing, not an
-        abandonment. Two engines meant paying for every component twice, and
-        building a runtime of one's own on top of that. With finite time and
-        resources, the honest choice was to stop spreading a small effort
-        thinly, back the web engine best suited to the work, and let a mature
-        framework solve the problems that are not Vanduo's to solve.
-      </p>
-      <p>
+        <strong>perspective</strong> is the UI line.
         <a href="https://www.npmjs.com/package/@vanduo-oss/vd3" rel="noopener"
           ><code>@vanduo-oss/vd3</code></a
         >
-        carries the same system forward rather than replacing it: the same
-        design language, the same <code>Vd*</code> components and composables,
-        the same <code>--vd-*</code> token model — now in a single Vue&nbsp;3
-        package with <code>vue</code> as its only peer dependency and no global
-        runtime.
+        is the design system in one package — DTCG tokens, the CSS tree, and
+        typed <code>Vd*</code> components and composables, with
+        <code>vue</code> as its only peer.
         <a
           href="https://www.npmjs.com/package/@vanduo-oss/vd3-cbun"
           rel="noopener"
           ><code>@vanduo-oss/vd3-cbun</code></a
         >
-        adds the heavier canvas and editor components as tree-shakeable subpath
-        exports. A narrower scope, maintained properly. The retired packages
-        remain published and installable — deprecated, not removed — so nothing
-        built on them breaks, and the
-        <a href="https://vd3.vanduo.dev/guides/migration" rel="noopener"
-          >migration guide</a
+        carries the heavier canvas and editor pieces as tree-shakeable subpath
+        exports. Docs live at
+        <a href="https://vd3.vanduo.dev/" rel="noopener">vd3.vanduo.dev</a>.
+      </p>
+      <p>
+        <strong>labs</strong> is where we try lightweight web-AI components —
+        semantic search, small LLM tools, and related helpers that fit a
+        web-oriented stack. The intent is practical support for vanduo-oss
+        development: headless engines you can drop into a page, with demos at
+        <a href="https://labs.vanduo.dev" rel="noopener">labs.vanduo.dev</a>.
+        Recently shipped:
+        <a
+          href="https://www.npmjs.com/package/@vanduo-oss/vdl-hybrid-search"
+          rel="noopener"
+          ><code>@vanduo-oss/vdl-hybrid-search</code></a
         >
-        maps the old packages onto the new one.
+        and
+        <a
+          href="https://www.npmjs.com/package/@vanduo-oss/vdl-ai-chat"
+          rel="noopener"
+          ><code>@vanduo-oss/vdl-ai-chat</code></a
+        >. Those packages stay lean by asking the host to provide third-party
+        libraries (Fuse.js, Transformers.js, LiteRT / WebLLM) rather than
+        bundling them in.
       </p>
     </section>
   </main>
 
   <footer class="foot">
     <a href="https://vd3.vanduo.dev/" rel="noopener">Documentation</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://labs.vanduo.dev" rel="noopener">Labs</a>
     <span aria-hidden="true">·</span>
     <a href="https://github.com/vanduo-oss" rel="noopener">GitHub</a>
     <span aria-hidden="true">·</span>
