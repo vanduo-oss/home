@@ -61,7 +61,7 @@ function closeMenu(): void {
               href="https://vd3.vanduo.dev/"
               rel="noopener"
               @click="closeMenu"
-              >Docs</a
+              >vd3 docs</a
             >
           </li>
           <li>
@@ -165,6 +165,24 @@ function closeMenu(): void {
           <p class="note">Docs and demos at vd3.vanduo.dev.</p>
           <span class="go"
             >vd3 docs <span class="arrow" aria-hidden="true">↗</span></span
+          >
+        </div>
+      </a>
+      <a class="line" href="https://oola.vanduo.dev">
+        <span class="label-with-badge">
+          <span class="label label-mono">ICONS</span>
+          <span class="badge">in progress</span>
+        </span>
+        <p class="blurb">
+          Structured Phi icon set —
+          OOLA ships 24×24 outline glyphs with golden-ratio mass, soft
+          corners, and <code>currentColor</code> SVGs. Draft catalog and
+          weights at oola.vanduo.dev.
+        </p>
+        <div class="aside">
+          <p class="note">Browse drafts and weights at oola.vanduo.dev.</p>
+          <span class="go"
+            >oola <span class="arrow" aria-hidden="true">↗</span></span
           >
         </div>
       </a>
