@@ -174,10 +174,9 @@ function closeMenu(): void {
           <span class="badge">in progress</span>
         </span>
         <p class="blurb">
-          Structured Phi icon set —
-          OOLA ships 24×24 outline glyphs with golden-ratio mass, soft
-          corners, and <code>currentColor</code> SVGs. Draft catalog and
-          weights at oola.vanduo.dev.
+          Structured Phi icon set — OOLA ships 24×24 outline glyphs with
+          golden-ratio mass, soft corners, and <code>currentColor</code> SVGs.
+          Draft catalog and weights at oola.vanduo.dev.
         </p>
         <div class="aside">
           <p class="note">Browse drafts and weights at oola.vanduo.dev.</p>
