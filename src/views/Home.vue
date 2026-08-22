@@ -171,7 +171,9 @@ function closeMenu(): void {
       <a class="line" href="https://oola.vanduo.dev">
         <span class="label-with-badge">
           <span class="label label-mono">ICONS</span>
-          <span class="badge">in progress</span>
+          <span class="badges">
+            <span class="badge">in progress</span>
+          </span>
         </span>
         <p class="blurb">
           Structured Phi icon set — OOLA ships 24×24 outline glyphs with
@@ -186,7 +188,13 @@ function closeMenu(): void {
         </div>
       </a>
       <a class="line" href="https://labs.vanduo.dev" rel="noopener">
-        <span class="label label-mono">AI</span>
+        <span class="label-with-badge">
+          <span class="label label-mono">AI</span>
+          <span class="badges">
+            <span class="badge">experimental</span>
+            <span class="badge">unstable</span>
+          </span>
+        </span>
         <p class="blurb">
           Lightweight web-AI engines —
           <code>@vanduo-oss/vdl-hybrid-search</code> (fuzzy + semantic search)

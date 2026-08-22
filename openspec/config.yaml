@@ -6,11 +6,11 @@ context: |
   vite + vite-ssg (prerenders the single route `/`) + vue-router. No pinia,
   no @unhead/vue — the page is one route with SEO baked into index.html and
   prerendered output.
-  Dogfoods the PUBLISHED package "@vanduo-oss/vd3": "^1.1.0" — plugin
-  (VanduoVue), @vanduo-oss/vd3/css/core, design tokens via var(--vd-*), and
-  useThemePreference for the theme toggle. No link: sibling consumption; npm
-  only. Markup stays bespoke (no Vd* components) to guarantee pixel parity
-  with the prior static page.
+  Dogfoods the PUBLISHED package "@vanduo-oss/vd3": "1.6.0" — plugin
+  (VanduoVue) with storagePrefix "vanduo-oss-", @vanduo-oss/vd3/css, design
+  tokens via var(--vd-*), and useThemePreference for the theme toggle. No
+  link: sibling consumption; npm only. Markup stays bespoke (no Vd*
+  components) to guarantee pixel parity with the prior static page.
   Tests: Playwright visual parity against baselines captured from live
   vanduo.dev before the rebuild. CI runs typecheck, lint, stylelint,
   format:check, build, and visual parity on PRs; deploy.yml publishes dist/

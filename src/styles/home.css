@@ -276,6 +276,12 @@ body {
   gap: 0.35rem;
 }
 
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
 .badge {
   font-size: 0.68rem;
   font-weight: 600;

@@ -5,9 +5,9 @@ import { fileURLToPath } from "url";
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)));
 
 export default defineConfig({
-  testDir: "./tests/visual",
-  testMatch: "parity.spec.ts",
-  snapshotPathTemplate: "{testDir}/baselines/{arg}{ext}",
+  testDir: "./tests",
+  testMatch: ["visual/parity.spec.ts", "functional/storage-and-badges.spec.ts"],
+  snapshotPathTemplate: "{testDir}/visual/baselines/{arg}{ext}",
 
   fullyParallel: false,
   forbidOnly: !!process.env.CI,

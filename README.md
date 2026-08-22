@@ -28,4 +28,4 @@ Push to `main` runs `.github/workflows/deploy.yml` (GitHub Actions → Pages). T
 
 ## OpenSpec
 
-Site changes are governed under `openspec/`. Active change: `rebuild-on-vd3`.
+Site changes are governed under `openspec/`. Active change: `vd3-16-storage-badges`.

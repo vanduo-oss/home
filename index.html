@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vanduo — vanduo open source software</title>
+  <title>vanduo-oss home</title>
   <meta name="description" content="Vanduo is open-source software by vanduo-oss: a Vue 3 design system (@vanduo-oss/vd3, @vanduo-oss/vd3-cbun) and lightweight web-AI engines for hybrid search and on-device chat (@vanduo-oss/vdl-hybrid-search, @vanduo-oss/vdl-ai-chat)." />
   <link rel="canonical" href="https://vanduo.dev/" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
@@ -14,17 +14,17 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Vanduo" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:title" content="Vanduo — vanduo open source software" />
+  <meta property="og:title" content="vanduo-oss home" />
   <meta property="og:description" content="Vue 3 design system (vd3 / vd3-cbun) and lightweight web-AI engines for search and on-device chat. Open source under @vanduo-oss." />
   <meta property="og:url" content="https://vanduo.dev/" />
   <meta property="og:image" content="https://vanduo.dev/og-image.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Vanduo — vanduo open source software" />
+  <meta property="og:image:alt" content="vanduo-oss home" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Vanduo — vanduo open source software" />
+  <meta name="twitter:title" content="vanduo-oss home" />
   <meta name="twitter:description" content="Vue 3 design system (vd3 / vd3-cbun) and lightweight web-AI engines for search and on-device chat. Open source under @vanduo-oss." />
   <meta name="twitter:image" content="https://vanduo.dev/og-image.png" />
 
@@ -107,14 +107,15 @@
   <!--
     Apply a stored theme before first paint (avoids flash); no choice → follow the OS.
 
-    The key is vd3's own: `vanduo-theme-preference`, holding one of
+    The key is this site's prefixed vd3 key (injected at build from
+    `VD3_THEME_PREFERENCE_KEY`): `vanduo-oss-theme-preference`, holding one of
     "system" | "dark" | "light" (vd3's THEME_MODES). This page dogfoods vd3
     after hydration, but the pre-paint script stays inline so the prerendered
     HTML applies the stored preference before Vue boots.
   -->
   <script>
     try {
-      var t = localStorage.getItem('vanduo-theme-preference');
+      var t = localStorage.getItem('<!--VD3_THEME_PREFERENCE_KEY-->');
       if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
     } catch (e) {}
   </script>

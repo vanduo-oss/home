@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { VD3_THEME_PREFERENCE_KEY } from "../../src/constants/vd3-storage";
 
 const viewports = [
   { name: "desktop", width: 1280, height: 800, maxDiffPixelRatio: 0.04 },
@@ -11,9 +12,12 @@ for (const vp of viewports) {
   for (const theme of themes) {
     test(`${vp.name} ${theme} default`, async ({ page }) => {
       await page.setViewportSize({ width: vp.width, height: vp.height });
-      await page.addInitScript((t) => {
-        localStorage.setItem("vanduo-theme-preference", t);
-      }, theme);
+      await page.addInitScript(
+        ({ key, t }) => {
+          localStorage.setItem(key, t);
+        },
+        { key: VD3_THEME_PREFERENCE_KEY, t: theme },
+      );
       await page.goto("/", { waitUntil: "networkidle" });
       await page.evaluate(() => document.fonts.ready);
       await expect(page).toHaveScreenshot(`${vp.name}-${theme}-default.png`, {
@@ -27,9 +31,12 @@ for (const vp of viewports) {
 
     test(`${vp.name} ${theme} after-toggle`, async ({ page }) => {
       await page.setViewportSize({ width: vp.width, height: vp.height });
-      await page.addInitScript((t) => {
-        localStorage.setItem("vanduo-theme-preference", t);
-      }, theme);
+      await page.addInitScript(
+        ({ key, t }) => {
+          localStorage.setItem(key, t);
+        },
+        { key: VD3_THEME_PREFERENCE_KEY, t: theme },
+      );
       await page.goto("/", { waitUntil: "networkidle" });
       await page.locator(".vd-theme-switcher-toggle").click();
       await page.evaluate(() => document.fonts.ready);
@@ -49,9 +56,9 @@ for (const vp of viewports) {
     test(`${vp.name} system ${colorScheme} os`, async ({ page }) => {
       await page.setViewportSize({ width: vp.width, height: vp.height });
       await page.emulateMedia({ colorScheme });
-      await page.addInitScript(() => {
-        localStorage.setItem("vanduo-theme-preference", "system");
-      });
+      await page.addInitScript((key) => {
+        localStorage.setItem(key, "system");
+      }, VD3_THEME_PREFERENCE_KEY);
       await page.goto("/", { waitUntil: "networkidle" });
       await page.evaluate(() => document.fonts.ready);
       await expect(page).toHaveScreenshot(
