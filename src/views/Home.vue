@@ -112,25 +112,6 @@ import { VdThemeSwitcher } from "@vanduo-oss/vd3";
           >
         </div>
       </a>
-      <a class="line" href="https://oola.vanduo.dev">
-        <span class="label-with-badge">
-          <span class="label label-mono">OOLA ICONS</span>
-          <span class="badges">
-            <span class="badge">in progress</span>
-          </span>
-        </span>
-        <p class="blurb">
-          Structured Phi icon set — OOLA ships 24×24 outline glyphs with
-          golden-ratio mass, soft corners, and <code>currentColor</code> SVGs.
-          Draft catalog and weights at oola.vanduo.dev.
-        </p>
-        <div class="aside">
-          <p class="note">Browse drafts and weights at oola.vanduo.dev.</p>
-          <span class="go"
-            >oola <span class="arrow" aria-hidden="true">↗</span></span
-          >
-        </div>
-      </a>
     </nav>
 
     <section class="story" aria-labelledby="story-heading">
@@ -143,10 +124,9 @@ import { VdThemeSwitcher } from "@vanduo-oss/vd3";
         npm scope, developed at
         <a href="https://github.com/vanduo-oss" rel="noopener"
           >github.com/vanduo-oss</a
-        >. Three lines: <strong>vd3</strong>, the Vue&nbsp;3 design system;
+        >. Two lines: <strong>vd3</strong>, the Vue&nbsp;3 design system; and
         <strong>Labs</strong>, small browser-friendly AI building blocks for
-        search and on-device chat; and <strong>OOLA</strong>, a structured icon
-        set.
+        search and on-device chat.
       </p>
       <p>
         <strong>vd3</strong> is the Vue&nbsp;3 design system.
