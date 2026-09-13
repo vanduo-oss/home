@@ -1,92 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { useNavbarGlassScroll, VdThemeSwitcher } from "@vanduo-oss/vd3";
-import VanduoBrandMark from "@/components/VanduoBrandMark.vue";
-
-const navRef = ref<HTMLElement | null>(null);
-const isScrolled = useNavbarGlassScroll(navRef);
-const menuOpen = ref(false);
-
-function toggleMenu(): void {
-  menuOpen.value = !menuOpen.value;
-}
-
-function closeMenu(): void {
-  menuOpen.value = false;
-}
+import { VdThemeSwitcher } from "@vanduo-oss/vd3";
 </script>
 
 <template>
-  <nav
-    ref="navRef"
-    class="vd-navbar vd-navbar-fixed vd-navbar-float vd-navbar-glass"
-    :class="{ 'vd-navbar-scrolled': isScrolled }"
-  >
-    <div class="vd-navbar-container">
-      <div class="vd-navbar-brand">
-        <div class="vd-navbar-brand-wrap">
-          <a
-            href="/"
-            class="vd-navbar-brand-link"
-            aria-label="Vanduo home"
-            @click="closeMenu"
-          >
-            <VanduoBrandMark size="2rem" class="vanduo-brand-mark-nav" />
-            <span class="hero-title-text">
-              <span class="hero-title-brand">vanduo-oss</span>
-            </span>
-          </a>
-        </div>
-      </div>
-
-      <div class="navbar-actions-always">
-        <VdThemeSwitcher :menu="false" />
-      </div>
-
-      <button
-        class="vd-navbar-toggle"
-        type="button"
-        aria-label="Toggle navigation"
-        :aria-expanded="menuOpen"
-        @click="toggleMenu"
-      >
-        <span></span><span></span><span></span>
-      </button>
-
-      <div class="vd-navbar-menu" :class="{ 'is-open': menuOpen }">
-        <ul class="vd-navbar-nav">
-          <li>
-            <a
-              class="vd-nav-link"
-              href="https://vd3.vanduo.dev/"
-              rel="noopener"
-              @click="closeMenu"
-              >vd3 docs</a
-            >
-          </li>
-          <li>
-            <a
-              class="vd-nav-link"
-              href="https://labs.vanduo.dev"
-              rel="noopener"
-              @click="closeMenu"
-              >Labs</a
-            >
-          </li>
-          <li>
-            <a
-              class="vd-nav-link"
-              href="https://github.com/vanduo-oss"
-              target="_blank"
-              rel="noopener noreferrer"
-              @click="closeMenu"
-              >GitHub</a
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <VdThemeSwitcher
+    class="vd-fab vd-fab-glass vd-fab-sm vd-fab-top-right"
+    :menu="false"
+  />
 
   <main class="wrap">
     <div class="masthead">
@@ -152,7 +72,7 @@ function closeMenu(): void {
 
     <nav class="lines" aria-label="Vanduo lines">
       <a class="line" href="https://vd3.vanduo.dev/">
-        <span class="label label-mono">UI</span>
+        <span class="label label-mono">VD3</span>
         <p class="blurb">
           Vue&nbsp;3 design system —
           <code>@vanduo-oss/vd3</code> ships typed <code>Vd*</code> components,
@@ -168,31 +88,11 @@ function closeMenu(): void {
           >
         </div>
       </a>
-      <a class="line" href="https://oola.vanduo.dev">
-        <span class="label-with-badge">
-          <span class="label label-mono">ICONS</span>
-          <span class="badges">
-            <span class="badge">in progress</span>
-          </span>
-        </span>
-        <p class="blurb">
-          Structured Phi icon set — OOLA ships 24×24 outline glyphs with
-          golden-ratio mass, soft corners, and <code>currentColor</code> SVGs.
-          Draft catalog and weights at oola.vanduo.dev.
-        </p>
-        <div class="aside">
-          <p class="note">Browse drafts and weights at oola.vanduo.dev.</p>
-          <span class="go"
-            >oola <span class="arrow" aria-hidden="true">↗</span></span
-          >
-        </div>
-      </a>
       <a class="line" href="https://labs.vanduo.dev" rel="noopener">
         <span class="label-with-badge">
-          <span class="label label-mono">AI</span>
+          <span class="label label-mono">LABS</span>
           <span class="badges">
             <span class="badge">experimental</span>
-            <span class="badge">unstable</span>
           </span>
         </span>
         <p class="blurb">
@@ -212,6 +112,25 @@ function closeMenu(): void {
           >
         </div>
       </a>
+      <a class="line" href="https://oola.vanduo.dev">
+        <span class="label-with-badge">
+          <span class="label label-mono">OOLA ICONS</span>
+          <span class="badges">
+            <span class="badge">in progress</span>
+          </span>
+        </span>
+        <p class="blurb">
+          Structured Phi icon set — OOLA ships 24×24 outline glyphs with
+          golden-ratio mass, soft corners, and <code>currentColor</code> SVGs.
+          Draft catalog and weights at oola.vanduo.dev.
+        </p>
+        <div class="aside">
+          <p class="note">Browse drafts and weights at oola.vanduo.dev.</p>
+          <span class="go"
+            >oola <span class="arrow" aria-hidden="true">↗</span></span
+          >
+        </div>
+      </a>
     </nav>
 
     <section class="story" aria-labelledby="story-heading">
@@ -224,17 +143,18 @@ function closeMenu(): void {
         npm scope, developed at
         <a href="https://github.com/vanduo-oss" rel="noopener"
           >github.com/vanduo-oss</a
-        >. Two complementary lines: a Vue&nbsp;3 design system for UI, and small
-        browser-friendly AI building blocks for search and on-device chat.
+        >. Three lines: <strong>vd3</strong>, the Vue&nbsp;3 design system;
+        <strong>Labs</strong>, small browser-friendly AI building blocks for
+        search and on-device chat; and <strong>OOLA</strong>, a structured icon
+        set.
       </p>
       <p>
-        <strong>perspective</strong> is the UI line.
+        <strong>vd3</strong> is the Vue&nbsp;3 design system.
         <a href="https://www.npmjs.com/package/@vanduo-oss/vd3" rel="noopener"
           ><code>@vanduo-oss/vd3</code></a
         >
-        is the design system in one package — DTCG tokens, the CSS tree, and
-        typed <code>Vd*</code> components and composables, with
-        <code>vue</code> as its only peer.
+        ships DTCG tokens, the CSS tree, and typed <code>Vd*</code> components
+        and composables, with <code>vue</code> as its only peer.
         <a
           href="https://www.npmjs.com/package/@vanduo-oss/vd3-cbun"
           rel="noopener"

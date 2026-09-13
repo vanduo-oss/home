@@ -13,7 +13,6 @@
   --muted: var(--vd-oc-gray-6);
   --rule: var(--vd-fib-slate-1);
   --accent: var(--vd-oc-blue-6);
-  --home-main-offset: calc(5rem + var(--vd-navbar-float-inset, 0.75rem));
 
   color-scheme: light;
 }
@@ -60,7 +59,7 @@ body {
   display: grid;
   grid-template-rows: 1fr auto;
   place-items: center;
-  padding: var(--home-main-offset) 1.25rem 2.5rem;
+  padding: 5rem 1.25rem 2.5rem;
   background: var(--bg);
   color: var(--fg);
   font-family:
@@ -103,122 +102,24 @@ body {
   color: var(--fg);
 }
 
-/* ── Floating glass navbar (dogfoods vd3; chrome specifics below) ── */
-
-.vd-navbar .vd-nav-link {
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0;
+/* Theme cycle as a vd3 glass FAB. Extra classes fall through onto the
+   switcher’s root button; this beats the default bordered toggle chrome. */
+.vd-theme-switcher-toggle.vd-fab {
+  width: var(--vd-fab-size-sm);
+  height: var(--vd-fab-size-sm);
+  border: 1px solid var(--vd-glass-border-light);
+  border-radius: 50%;
+  background: var(--vd-glass-bg-light);
+  color: var(--vd-text-primary);
+  box-shadow: var(--vd-glass-shadow);
+  backdrop-filter: blur(var(--vd-glass-blur)) saturate(var(--vd-glass-saturate));
 }
 
-.vd-navbar-brand-wrap {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-}
-
-.vd-navbar-brand-wrap > a.vd-navbar-brand-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.15rem;
-  padding: 0;
-  font-family: Michroma, sans-serif;
-  font-weight: 400;
-  line-height: 1;
-  text-transform: lowercase;
-  text-decoration: none;
-  color: inherit;
-  transform: none;
-}
-
-.vd-navbar-brand-wrap > a.vd-navbar-brand-link .vanduo-brand-mark-nav {
-  display: inline-flex;
-  align-items: center;
-  line-height: 0;
-  overflow: visible;
-}
-
-.vd-navbar-brand-wrap
-  > a.vd-navbar-brand-link
-  .vanduo-brand-mark-nav
-  .vanduo-mark {
-  display: block;
-  flex-shrink: 0;
-  overflow: visible;
-
-  /* Optical align with Michroma “vanduo-oss” */
-  transform: translateY(0.06em);
-}
-
-.vd-navbar-brand-wrap > a.vd-navbar-brand-link .hero-title-text {
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
-  transform: translateY(0.08em);
-}
-
-.vd-navbar-brand-wrap > a.vd-navbar-brand-link .hero-title-brand {
-  display: inline-block;
-  font-weight: 400;
-  line-height: 1;
+.vd-theme-switcher-toggle.vd-fab:hover {
+  background: var(--vd-glass-bg-light);
   color: var(--accent);
-}
-
-.navbar-actions-always {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-left: auto;
-  order: 99;
-  flex-shrink: 0;
-  z-index: 2;
-}
-
-@media (width >= 992px) {
-  .vd-navbar-brand {
-    order: 1;
-  }
-
-  .vd-navbar-menu {
-    order: 2;
-  }
-
-  .navbar-actions-always {
-    order: 3;
-    margin-left: 0;
-  }
-}
-
-@media (width <= 991.98px) {
-  .navbar-actions-always {
-    margin-right: 0.75rem;
-    order: 98;
-  }
-
-  .vd-navbar-toggle {
-    order: 99;
-    flex-shrink: 0;
-  }
-}
-
-/* Match vd3 theme switcher hit target to borderless glass-navbar chrome
-   (same pattern as vd3-docs `.navbar-actions-always .vd-theme-switcher-toggle`). */
-.navbar-actions-always .vd-theme-switcher-toggle {
-  width: 2.25rem;
-  height: 2.25rem;
-  border: 1px solid transparent;
-  border-radius: var(--vd-card-border-radius);
-  background: transparent;
-  color: var(--fg);
-  font-size: 1.2rem;
-}
-
-.navbar-actions-always .vd-theme-switcher-toggle:hover {
-  background: var(--vd-bg-secondary);
-  color: var(--accent);
-  border-color: transparent;
+  border-color: var(--vd-glass-border-light);
+  box-shadow: var(--vd-glass-float-shadow, var(--vd-glass-shadow));
 }
 
 .hero {
