@@ -76,10 +76,11 @@ import { VdThemeSwitcher } from "@vanduo-oss/vd3";
         <p class="blurb">
           Vue&nbsp;3 design system —
           <code>@vanduo-oss/vd3</code> ships typed <code>Vd*</code> components,
-          composables, and <code>--vd-*</code> tokens.
-          <code>@vanduo-oss/vd3-cbun</code> adds charts, flowchart, hex-grid,
-          and music-player as tree-shakeable subpaths. Peer dependency:
-          <code>vue</code>.
+          composables, and <code>--vd-*</code> tokens. Charts and flowchart are
+          <code>@vanduo-oss/vd3-charts</code> /
+          <code>@vanduo-oss/vd3-flowchart</code>; remaining canvas widgets live
+          in Labs <code>vdl-cbun</code> (<code>link:</code>, not npm). Peer
+          dependency: <code>vue</code>.
         </p>
         <div class="aside">
           <p class="note">Docs and demos at vd3.vanduo.dev.</p>
@@ -97,14 +98,14 @@ import { VdThemeSwitcher } from "@vanduo-oss/vd3";
         </span>
         <p class="blurb">
           Lightweight web-AI engines —
-          <code>@vanduo-oss/vdl-hybrid-search</code> (fuzzy + semantic search)
-          and <code>@vanduo-oss/vdl-ai-chat</code> (on-device LLM chat with
-          guardrails). Built to support vanduo-oss web work; live demos at
-          labs.vanduo.dev.
+          <code>vdl-hybrid-search</code> (fuzzy + semantic search) and
+          <code>vdl-ai-chat</code> (on-device LLM chat with guardrails),
+          consumed as sibling repos via <code>link:</code> (not npm). Built to
+          support vanduo-oss web work; live demos at labs.vanduo.dev.
         </p>
         <div class="aside">
           <p class="note">
-            Headless packages; hosts wire Fuse, Transformers.js, and
+            Headless sibling repos; hosts wire Fuse, Transformers.js, and
             LiteRT/WebLLM.
           </p>
           <span class="go"
@@ -129,19 +130,24 @@ import { VdThemeSwitcher } from "@vanduo-oss/vd3";
         search and on-device chat.
       </p>
       <p>
-        <strong>vd3</strong> is the Vue&nbsp;3 design system.
+        <strong>vd3</strong> is the Vue&nbsp;3 design system. On npm:
         <a href="https://www.npmjs.com/package/@vanduo-oss/vd3" rel="noopener"
           ><code>@vanduo-oss/vd3</code></a
-        >
-        ships DTCG tokens, the CSS tree, and typed <code>Vd*</code> components
-        and composables, with <code>vue</code> as its only peer.
+        >,
         <a
-          href="https://www.npmjs.com/package/@vanduo-oss/vd3-cbun"
+          href="https://www.npmjs.com/package/@vanduo-oss/vd3-charts"
           rel="noopener"
-          ><code>@vanduo-oss/vd3-cbun</code></a
+          ><code>@vanduo-oss/vd3-charts</code></a
+        >, and
+        <a
+          href="https://www.npmjs.com/package/@vanduo-oss/vd3-flowchart"
+          rel="noopener"
+          ><code>@vanduo-oss/vd3-flowchart</code></a
+        >. Heavier canvas widgets live in the Labs
+        <a href="https://github.com/vanduo-oss/vdl-cbun" rel="noopener"
+          ><code>vdl-cbun</code></a
         >
-        carries the heavier canvas and editor pieces as tree-shakeable subpath
-        exports. Docs live at
+        sibling (GitHub / <code>link:</code>, not npm). Docs live at
         <a href="https://vd3.vanduo.dev/" rel="noopener">vd3.vanduo.dev</a>.
       </p>
       <p>
@@ -150,20 +156,18 @@ import { VdThemeSwitcher } from "@vanduo-oss/vd3";
         web-oriented stack. The intent is practical support for vanduo-oss
         development: headless engines you can drop into a page, with demos at
         <a href="https://labs.vanduo.dev" rel="noopener">labs.vanduo.dev</a>.
-        Recently shipped:
-        <a
-          href="https://www.npmjs.com/package/@vanduo-oss/vdl-hybrid-search"
-          rel="noopener"
-          ><code>@vanduo-oss/vdl-hybrid-search</code></a
+        Engines
+        <a href="https://github.com/vanduo-oss/vdl-hybrid-search" rel="noopener"
+          ><code>vdl-hybrid-search</code></a
         >
         and
-        <a
-          href="https://www.npmjs.com/package/@vanduo-oss/vdl-ai-chat"
-          rel="noopener"
-          ><code>@vanduo-oss/vdl-ai-chat</code></a
-        >. Those packages stay lean by asking the host to provide third-party
-        libraries (Fuse.js, Transformers.js, LiteRT / WebLLM) rather than
-        bundling them in.
+        <a href="https://github.com/vanduo-oss/vdl-ai-chat" rel="noopener"
+          ><code>vdl-ai-chat</code></a
+        >
+        are sibling repos consumed via <code>link:</code> (not published on
+        npm). They stay lean by asking the host to provide third-party libraries
+        (Fuse.js, Transformers.js, LiteRT / WebLLM) rather than bundling them
+        in.
       </p>
     </section>
   </main>
