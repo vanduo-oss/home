@@ -21,20 +21,20 @@
     "test:capture-baseline": "playwright test --config=playwright.capture.config.ts"
   },
   "dependencies": {
-    "@vanduo-oss/vd3": "1.6.0",
-    "vue": "^3.5.42",
+    "@vanduo-oss/vd3": "1.7.4",
+    "vue": "^3.5.43",
     "vue-router": "^5.3.1"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@playwright/test": "^1.63.0",
-    "@types/node": "^26.5.1",
+    "@types/node": "^26.6.2",
     "@typescript-eslint/parser": "8.62.0",
-    "@vitejs/plugin-vue": "^6.0.8",
+    "@vitejs/plugin-vue": "^6.0.9",
     "@vue/tsconfig": "^0.9.1",
-    "eslint": "^10.10.0",
+    "eslint": "^10.11.0",
     "eslint-plugin-vue": "^10.11.0",
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.8",
     "stylelint": "^17.15.0",
     "stylelint-config-standard": "^40.0.0",
     "typescript": "^6.0.3",
