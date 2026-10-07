@@ -78,38 +78,13 @@ import { VdThemeSwitcher } from "@vanduo-oss/vd3";
           <code>@vanduo-oss/vd3</code> ships typed <code>Vd*</code> components,
           composables, and <code>--vd-*</code> tokens. Charts and flowchart are
           <code>@vanduo-oss/vd3-charts</code> /
-          <code>@vanduo-oss/vd3-flowchart</code>; remaining canvas widgets live
-          in Labs <code>vdl-cbun</code> (<code>link:</code>, not npm). Peer
-          dependency: <code>vue</code>.
+          <code>@vanduo-oss/vd3-flowchart</code>. Peer dependency:
+          <code>vue</code>.
         </p>
         <div class="aside">
           <p class="note">Docs and demos at vd3.vanduo.dev.</p>
           <span class="go"
             >vd3 docs <span class="arrow" aria-hidden="true">↗</span></span
-          >
-        </div>
-      </a>
-      <a class="line" href="https://labs.vanduo.dev" rel="noopener">
-        <span class="label-with-badge">
-          <span class="label label-mono">LABS</span>
-          <span class="badges">
-            <span class="badge">experimental</span>
-          </span>
-        </span>
-        <p class="blurb">
-          Lightweight web-AI engines —
-          <code>vdl-hybrid-search</code> (fuzzy + semantic search) and
-          <code>vdl-ai-chat</code> (on-device LLM chat with guardrails),
-          consumed as sibling repos via <code>link:</code> (not npm). Built to
-          support vanduo-oss web work; live demos at labs.vanduo.dev.
-        </p>
-        <div class="aside">
-          <p class="note">
-            Headless sibling repos; hosts wire Fuse, Transformers.js, and
-            LiteRT/WebLLM.
-          </p>
-          <span class="go"
-            >labs <span class="arrow" aria-hidden="true">↗</span></span
           >
         </div>
       </a>
@@ -125,49 +100,8 @@ import { VdThemeSwitcher } from "@vanduo-oss/vd3";
         npm scope, developed at
         <a href="https://github.com/vanduo-oss" rel="noopener"
           >github.com/vanduo-oss</a
-        >. Two lines: <strong>vd3</strong>, the Vue&nbsp;3 design system; and
-        <strong>Labs</strong>, small browser-friendly AI building blocks for
-        search and on-device chat.
-      </p>
-      <p>
-        <strong>vd3</strong> is the Vue&nbsp;3 design system. On npm:
-        <a href="https://www.npmjs.com/package/@vanduo-oss/vd3" rel="noopener"
-          ><code>@vanduo-oss/vd3</code></a
-        >,
-        <a
-          href="https://www.npmjs.com/package/@vanduo-oss/vd3-charts"
-          rel="noopener"
-          ><code>@vanduo-oss/vd3-charts</code></a
-        >, and
-        <a
-          href="https://www.npmjs.com/package/@vanduo-oss/vd3-flowchart"
-          rel="noopener"
-          ><code>@vanduo-oss/vd3-flowchart</code></a
-        >. Heavier canvas widgets live in the Labs
-        <a href="https://github.com/vanduo-oss/vdl-cbun" rel="noopener"
-          ><code>vdl-cbun</code></a
-        >
-        sibling (GitHub / <code>link:</code>, not npm). Docs live at
-        <a href="https://vd3.vanduo.dev/" rel="noopener">vd3.vanduo.dev</a>.
-      </p>
-      <p>
-        <strong>labs</strong> is where we try lightweight web-AI components —
-        semantic search, small LLM tools, and related helpers that fit a
-        web-oriented stack. The intent is practical support for vanduo-oss
-        development: headless engines you can drop into a page, with demos at
-        <a href="https://labs.vanduo.dev" rel="noopener">labs.vanduo.dev</a>.
-        Engines
-        <a href="https://github.com/vanduo-oss/vdl-hybrid-search" rel="noopener"
-          ><code>vdl-hybrid-search</code></a
-        >
-        and
-        <a href="https://github.com/vanduo-oss/vdl-ai-chat" rel="noopener"
-          ><code>vdl-ai-chat</code></a
-        >
-        are sibling repos consumed via <code>link:</code> (not published on
-        npm). They stay lean by asking the host to provide third-party libraries
-        (Fuse.js, Transformers.js, LiteRT / WebLLM) rather than bundling them
-        in.
+        >. The flagship line is <strong>vd3</strong>, the Vue&nbsp;3 design
+        system.
       </p>
     </section>
   </main>
