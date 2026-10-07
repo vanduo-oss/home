@@ -109,8 +109,6 @@ import { VdThemeSwitcher } from "@vanduo-oss/vd3";
   <footer class="foot">
     <a href="https://vd3.vanduo.dev/" rel="noopener">Documentation</a>
     <span aria-hidden="true">·</span>
-    <a href="https://labs.vanduo.dev" rel="noopener">Labs</a>
-    <span aria-hidden="true">·</span>
     <a href="https://github.com/vanduo-oss" rel="noopener">GitHub</a>
     <span aria-hidden="true">·</span>
     <a href="https://www.npmjs.com/org/vanduo-oss" rel="noopener">npm</a>
