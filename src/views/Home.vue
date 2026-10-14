@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { VdThemeSwitcher } from "@vanduo-oss/vd3";
+import HomeAtmosphere from "@/components/HomeAtmosphere.vue";
 </script>
 
 <template>
+  <HomeAtmosphere :active="true" />
+
   <VdThemeSwitcher
     class="vd-fab vd-fab-glass vd-fab-sm vd-fab-top-right"
     :menu="false"
