@@ -20,7 +20,7 @@ pnpm lint && pnpm run stylelint && pnpm run format:check
 pnpm run test:e2e # visual parity vs live-site baselines
 ```
 
-Requires Node ≥ 24 and pnpm 10.28.2 (`corepack enable`).
+Requires Node ≥ 26 and pnpm 10.28.2 (`corepack enable`). `.nvmrc` is `26`.
 
 ## Deploy
 
