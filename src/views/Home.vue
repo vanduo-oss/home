@@ -75,7 +75,25 @@ import HomeAtmosphere from "@/components/HomeAtmosphere.vue";
 
     <nav class="lines" aria-label="Vanduo lines">
       <a class="line" href="https://vd3.vanduo.dev/">
-        <span class="label label-mono">VD3</span>
+        <div class="line-brand">
+          <div class="line-logo">
+            <img
+              src="/brand/vd3-ui/vd3-ui-lockup-dark.svg"
+              alt=""
+              class="vd3-logo-dark"
+              width="140"
+              height="54"
+            />
+            <img
+              src="/brand/vd3-ui/vd3-ui-lockup-light.svg"
+              alt=""
+              class="vd3-logo-light"
+              width="140"
+              height="54"
+            />
+          </div>
+          <span class="label label-mono sr-only">VD3 UI</span>
+        </div>
         <p class="blurb">
           Vue&nbsp;3 design system —
           <code>@vanduo-oss/vd3</code> ships typed <code>Vd*</code> components,
@@ -87,7 +105,7 @@ import HomeAtmosphere from "@/components/HomeAtmosphere.vue";
         <div class="aside">
           <p class="note">Docs and demos at vd3.vanduo.dev.</p>
           <span class="go"
-            >vd3 docs <span class="arrow" aria-hidden="true">↗</span></span
+            >VD3 UI docs <span class="arrow" aria-hidden="true">↗</span></span
           >
         </div>
       </a>
@@ -103,7 +121,7 @@ import HomeAtmosphere from "@/components/HomeAtmosphere.vue";
         npm scope, developed at
         <a href="https://github.com/vanduo-oss" rel="noopener"
           >github.com/vanduo-oss</a
-        >. The flagship line is <strong>vd3</strong>, the Vue&nbsp;3 design
+        >. The flagship line is <strong>VD3 UI</strong>, the Vue&nbsp;3 design
         system.
       </p>
     </section>

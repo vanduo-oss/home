@@ -18,8 +18,8 @@ importers:
   .:
     dependencies:
       '@vanduo-oss/vd3':
-        specifier: 1.8.2
-        version: 1.8.2(vue@3.5.43(typescript@6.0.3))
+        specifier: 1.9.1
+        version: 1.9.1(vue@3.5.43(typescript@6.0.3))
       vue:
         specifier: ^3.5.43
         version: 3.5.43(typescript@6.0.3)
@@ -479,8 +479,8 @@ packages:
     peerDependencies:
       vue: '>=3.5.18'
 
-  '@vanduo-oss/vd3@1.8.2':
-    resolution: {integrity: sha512-u+j4MdSRtIld6WZ81HGxKx6KQQeqJ2QReZh/wY8xVpQQXEu0LlYRJH/YWWjxvWY86ETaZCS40gDhW2gbH2i8hQ==}
+  '@vanduo-oss/vd3@1.9.1':
+    resolution: {integrity: sha512-+Qi0V2jLp60ekd7fwRA+rKGTMCRRgsT4XkjSFzGJPx5m8Sgd+kVfsz4gbR+262aUNBZm9oRpu05/hZQkLpC9Tw==}
     engines: {node: '>=20.19.0', pnpm: '>=10'}
     peerDependencies:
       vue: '>=3.3.0'
@@ -2041,7 +2041,7 @@ snapshots:
       unhead: 2.1.17
       vue: 3.5.43(typescript@6.0.3)
 
-  '@vanduo-oss/vd3@1.8.2(vue@3.5.43(typescript@6.0.3))':
+  '@vanduo-oss/vd3@1.9.1(vue@3.5.43(typescript@6.0.3))':
     dependencies:
       vue: 3.5.43(typescript@6.0.3)
 
