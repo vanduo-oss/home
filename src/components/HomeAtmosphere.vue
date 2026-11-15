@@ -9,6 +9,7 @@
 import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import {
   createHomeAtmosphere,
+  type AtmospherePalette,
   type HomeAtmosphereEngine,
 } from "@/home-atmosphere";
 
@@ -16,9 +17,12 @@ const props = withDefaults(
   defineProps<{
     /** When false, animation pauses and the layer is hidden. */
     active?: boolean;
+    /** Color palette for WebGL blobs ("blue" for vanduo, "vd3-teal" for VD3 UI). */
+    palette?: AtmospherePalette;
   }>(),
   {
     active: true,
+    palette: "blue",
   },
 );
 
@@ -95,6 +99,7 @@ onMounted(() => {
   engine = createHomeAtmosphere(canvas, {
     reducedMotion: prefersReducedMotion(),
     styleRoot: canvas.parentElement,
+    palette: props.palette,
   });
   if (!engine) {
     unsupported.value = true;
@@ -115,6 +120,7 @@ function onMotionChange(): void {
   engine = createHomeAtmosphere(canvas, {
     reducedMotion: prefersReducedMotion(),
     styleRoot: canvas.parentElement,
+    palette: props.palette,
   });
   if (!engine) {
     unsupported.value = true;
@@ -128,6 +134,13 @@ watch(
   () => props.active,
   () => {
     syncActive();
+  },
+);
+
+watch(
+  () => props.palette,
+  (next) => {
+    engine?.setPalette(next);
   },
 );
 

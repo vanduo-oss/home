@@ -363,9 +363,12 @@ const DEFAULT_KNOBS: Readonly<LiquidKnobs> = Object.freeze({
   alpha: 1,
 });
 
+export type AtmospherePalette = "blue" | "vd3-teal";
+
 export interface HomeAtmosphereOptions {
   reducedMotion?: boolean;
   styleRoot?: HTMLElement | null;
+  palette?: AtmospherePalette;
 }
 
 export interface HomeAtmosphereEngine {
@@ -373,6 +376,7 @@ export interface HomeAtmosphereEngine {
   stop: () => void;
   destroy: () => void;
   syncThemeColors: (root?: HTMLElement | null) => void;
+  setPalette: (palette: AtmospherePalette) => void;
   onPointer: (clientX: number, clientY: number) => void;
   resize: () => void;
 }
@@ -397,6 +401,7 @@ export function createHomeAtmosphere(
     willReadFrequently: true,
   });
   const reducedMotion = Boolean(options.reducedMotion);
+  let activePalette: AtmospherePalette = options.palette ?? "blue";
   const touch = new TouchTexture();
   let program: WebGLProgram;
   try {
@@ -527,11 +532,26 @@ export function createHomeAtmosphere(
   function syncThemeColors(root?: HTMLElement | null): void {
     const themeEl = document.documentElement;
     const isDark = resolveIsDark(themeEl);
-    const primaryToken = isDark ? "--vd-oc-blue-4" : "--vd-oc-blue-6";
+    const isTeal = activePalette === "vd3-teal";
+    const primaryToken = isTeal
+      ? isDark
+        ? "--vd-oc-teal-4"
+        : "--vd-oc-teal-6"
+      : isDark
+        ? "--vd-oc-blue-4"
+        : "--vd-oc-blue-6";
+    const secondaryToken = isTeal
+      ? isDark
+        ? "--vd-oc-cyan-4"
+        : "--vd-oc-cyan-6"
+      : null;
     const primary =
       readThemeColor(themeEl, primaryToken, colorContext) ||
       readThemeColor(themeEl, "--vd-color-primary", colorContext) ||
       colors.primary;
+    const secondary = secondaryToken
+      ? readThemeColor(themeEl, secondaryToken, colorContext)
+      : null;
     const base =
       readThemeColor(themeEl, "--bg", colorContext) ||
       readThemeColor(themeEl, "--vd-bg-primary", colorContext) ||
@@ -547,14 +567,18 @@ export function createHomeAtmosphere(
     colors.primary = primary;
     if (isDark) {
       // Anchor soft/neutral washes on base so overlapping blobs don't glare near-white.
-      colors.primarySoft = mixRgb(primary, base, 0.86);
+      colors.primarySoft = secondary
+        ? mixRgb(secondary, base, 0.78)
+        : mixRgb(primary, base, 0.86);
       colors.neutralA = mixRgb(mixRgb(n8, primary, 0.08), base, 0.78);
       colors.neutralB = mixRgb(mixRgb(base, primary, 0.06), n8, 0.22);
       colors.base = base;
     } else {
       // Mid neutrals + heavier page-base pull (no near-white n2). Tint atmosphere base
       // so gaps between blobs aren't paper-white “hotspots.”
-      colors.primarySoft = mixRgb(primary, base, 0.58);
+      colors.primarySoft = secondary
+        ? mixRgb(secondary, base, 0.52)
+        : mixRgb(primary, base, 0.58);
       colors.neutralA = mixRgb(mixRgb(n6, primary, 0.14), base, 0.52);
       colors.neutralB = mixRgb(mixRgb(n6, primary, 0.16), base, 0.42);
       colors.base = mixRgb(base, mixRgb(n6, primary, 0.18), 0.28);
@@ -697,12 +721,18 @@ export function createHomeAtmosphere(
     if (lose) lose.loseContext();
   }
 
+  function setPalette(next: AtmospherePalette): void {
+    activePalette = next;
+    syncThemeColors();
+  }
+
   syncThemeColors();
   return {
     start,
     stop,
     destroy,
     syncThemeColors,
+    setPalette,
     onPointer,
     resize,
   };
